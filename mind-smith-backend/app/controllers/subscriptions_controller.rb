@@ -1,8 +1,9 @@
-class SubscriptionController < ApplicationController
+class SubscriptionsController < ApplicationController
     before_action :find_subscription, only: [:show, :edit, :update, :destroy]
 
     def index
         @subscriptions = Subscription.all 
+        render json: @subscriptions
     end
 
     def show
