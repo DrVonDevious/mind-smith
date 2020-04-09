@@ -1,26 +1,43 @@
 class UsersController < ApplicationController
 
-  def Index
+  def index
     users = User.all
     render json: users
   end
 
-  def Show
+  def show
+    user = find_user(params[:id])
+    render json: user
   end
 
-  def Edit
+  def edit
   end
 
-  def Update
+  def update
+    user = find_user(params[:id])
+    user.update(strong_params)
   end
 
-  def New
+  def new
   end
 
-  def Create
+  def create
+    user = User.create(strong_params)
   end
 
-  def Delete
+  def delete
+    user = User.find_by(id: params[:id])
+    user.destroy()
+  end
+
+  private
+
+  def find_user(id)
+    return User.find_by(id: id)
+  end
+
+  def strong_params
+    params.require().permit(:username, :password_digest, :bio, :img_url)
   end
 
 end
