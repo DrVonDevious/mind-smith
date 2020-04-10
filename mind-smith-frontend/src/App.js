@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Login from './components/LoginForm'
 import Register from './components/Register'
 import ProfileContainer from './containers/ProfileContainer'
+import Channels from './components/Channels'
 
 
 function App() {
