@@ -25,7 +25,7 @@ function App() {
   return (
     <div >
       <Navbar handleLoginRegister={showLoginRegister} />
-      <Channels/>
+      {/* <Channels/> */}
       {loginOverlay && <Login />}
       {registerOverlay && <Register />}
       {currentPage === "profile" ? <ProfileContainer /> : null}
