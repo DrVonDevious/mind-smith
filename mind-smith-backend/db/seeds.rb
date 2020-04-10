@@ -11,10 +11,10 @@ u1 = User.create(username: "Somaia", password_digest: "guest", bio: "Cracking sk
 u2 = User.create(username: "DrVonDevious", password_digest: "guest", bio: "Existence is suffering, so you might as well use Vim", img_url: "https://ca.slack-edge.com/T02MD9XTF-UT02BHX47-1e2b6e51a86d-512")
 u3 = User.create(username: "SaintRobDub", password_digest: "guest", bio: "Locksmith turned coder, so now I can break into your computer AND your house", img_url: "https://ca.slack-edge.com/T02MD9XTF-USLN1N0SX-639efefc59a2-512")
 
-c1 = Channel.create(name: "General")
-c2 = Channel.create(name: "Locksmithing")
-c3 = Channel.create(name: "Coding")
-c4 = Channel.create(name: "Livestock")
+c1 = Channel.create(name: "General", description:"everything youcould ever want to know about foobar")
+c2 = Channel.create(name: "Locksmithing",description:"everything youcould ever want to know about foobar")
+c3 = Channel.create(name: "Coding",description:"everything youcould ever want to know about foobar")
+c4 = Channel.create(name: "Livestock",description:"everything youcould ever want to know about foobar")
 
 p1 = Post.create(title: "First Post", body: "Hello World!", channel_id: c1.id, user_id: u1.id)
 p2 = Post.create(title: "Second Post", body: "Almost as good as the first", channel_id: c1.id, user_id: u2.id)
