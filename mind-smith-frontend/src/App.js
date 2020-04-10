@@ -5,6 +5,7 @@ import Register from './components/Register'
 import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 
+
 function App() {
 
   const [currentPage, setCurrentPage] = useState("home")
