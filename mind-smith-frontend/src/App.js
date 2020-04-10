@@ -5,8 +5,10 @@ import Register from './components/Register'
 import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 
-
 function App() {
+
+  // TODO: Should use actual authentication because we dont want to end up like Zoom :(
+  const [currentUser, setCurrentUser] = useState({})
 
   const [currentPage, setCurrentPage] = useState("home")
   const [loginOverlay, setLoginOverlay] = useState(false)
@@ -33,7 +35,7 @@ function App() {
 
   return (
     <div >
-      <Navbar handleLoginRegister={showLoginRegister} handleChangePage={changePage}/>
+      <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage}/>
       {loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
       {registerOverlay && <Register handleCloseOverlay={closeOverlay}/>}
       {currentPage === "profile" ? <ProfileContainer /> : null}
