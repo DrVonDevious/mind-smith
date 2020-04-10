@@ -1,6 +1,8 @@
 import React from 'react';
 import Login from './components/LoginForm'
 import Register from './components/Register'
+import Channels from './components/Channels'
+
 
 
 function App() {
@@ -8,6 +10,7 @@ function App() {
     <div >
       <Login/>
       <Register/>
+      <Channels/>
     </div>
   );
 }
