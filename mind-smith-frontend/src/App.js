@@ -1,13 +1,16 @@
 import React from 'react';
 import Login from './components/LoginForm'
 import Register from './components/Register'
+import DynamicContainer from './components/DynamicContainer'
 
 
 function App() {
+
   return (
     <div >
-      <Login/>
-      <Register/>
+      <DynamicContainer />
+      <Login />
+      <Register />
     </div>
   );
 }
