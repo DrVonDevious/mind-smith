@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from './components/Navbar'
 import Login from './components/LoginForm'
 import Register from './components/Register'
 import ProfileContainer from './containers/ProfileContainer'
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <div >
+      <Navbar />
       {loginOverlay && <Login />}
       {registerOverlay && <Register />}
       {currentPage === "profile" ? <ProfileContainer /> : null}
