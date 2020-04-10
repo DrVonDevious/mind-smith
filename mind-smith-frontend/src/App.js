@@ -35,6 +35,8 @@ function App() {
       case "profile": return <ProfileContainer />
       case "channels": return <Channels/>
     }
+  }
+  
   const changePage = (e) => {
     setCurrentPage(e)
   }
@@ -50,4 +52,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
