@@ -6,10 +6,12 @@ import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 import SideBar from './components/SideBar'
 
-
 function App() {
 
-  const [currentPage, setCurrentPage] = useState("channels")
+  // TODO: Should use actual authentication because we dont want to end up like Zoom :(
+  const [currentUser, setCurrentUser] = useState({})
+
+  const [currentPage, setCurrentPage] = useState("home")
   const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
 
@@ -33,11 +35,13 @@ function App() {
       case "profile": return <ProfileContainer />
       case "channels": return <Channels/>
     }
+  const changePage = (e) => {
+    setCurrentPage(e)
   }
 
   return (
     <div >
-      <Navbar handleLoginRegister={showLoginRegister} />
+      <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage}/>
       {loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
       {registerOverlay && <Register handleCloseOverlay={closeOverlay}/>}
       {displayCurrentPage()}

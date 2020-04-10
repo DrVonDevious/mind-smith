@@ -13,7 +13,7 @@ const LoginForm = (props) => (
         {/* <Image src='/logo.png' />  */}
         Log-in to your account
       </Header>
-      <Form size='large'>
+      <Form size='large' onSubmit={props.handleLogin}>
         <Segment stacked>
           <Form.Input fluid icon='user' iconPosition='left' placeholder='User name' />
           <Form.Input
