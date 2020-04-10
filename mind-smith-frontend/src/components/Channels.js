@@ -1,6 +1,8 @@
 import React, { useState , useEffect } from 'react';
 import Channel from './Channel'
+
 import { List } from 'semantic-ui-react'
+
 
 const Channels = (props) => {
     const [channels, setChannels] = useState([]);
