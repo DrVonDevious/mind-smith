@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import Login from './components/LoginForm'
 import Register from './components/Register'
 import ProfileContainer from './containers/ProfileContainer'
-
+import Channels from './components/Channels'
 
 function App() {
 
@@ -13,11 +13,8 @@ function App() {
 
   return (
     <div >
-<<<<<<< HEAD
       <Navbar />
-=======
       <Channels/>
->>>>>>> master
       {loginOverlay && <Login />}
       {registerOverlay && <Register />}
       {currentPage === "profile" ? <ProfileContainer /> : null}

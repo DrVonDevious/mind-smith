@@ -1,4 +1,5 @@
 import React, { useState , useEffect } from 'react';
+import Channel from './Channel'
 
 const Channels = (props) => {
     const [channels, setChannels] = useState([]);
