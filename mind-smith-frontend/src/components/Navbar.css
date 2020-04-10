@@ -1,5 +1,6 @@
 .navbar {
   display: flex;
+  border-radius: 0px;
   background-color: #00B5AD;
   min-height: 46px;
 }
@@ -13,5 +14,5 @@
   border: none;
   background-color: transparent;
   position: relative;
-  left: 70vw;
+  left: 64vw;
 }
