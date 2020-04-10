@@ -4,6 +4,7 @@ import Login from './components/LoginForm'
 import Register from './components/Register'
 import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
+import SideBar from './components/SideBar'
 
 function App() {
 
@@ -29,6 +30,13 @@ function App() {
     setLoginOverlay(false)
   }
 
+  const displayCurrentPage = () => {
+    switch (currentPage) {
+      case "profile": return <ProfileContainer />
+      case "channels": return <Channels/>
+    }
+  }
+  
   const changePage = (e) => {
     setCurrentPage(e)
   }
@@ -38,10 +46,10 @@ function App() {
       <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage}/>
       {loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
       {registerOverlay && <Register handleCloseOverlay={closeOverlay}/>}
-      {currentPage === "profile" ? <ProfileContainer /> : null}
-      {currentPage === "channels" ? <Channels /> : null}
+      {displayCurrentPage()}
+      <SideBar/>
     </div>
   );
 }
 
-export default App;
+export default App

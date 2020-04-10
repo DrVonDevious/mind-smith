@@ -13,7 +13,7 @@ const Channel = (props) => {
         < Segment stacked>
             <List.Item>
             <List.Content floated='right'>
-                <Button color='teal' floated='right' size='large'>Follow</Button>
+                <Button onClick={null}color='teal' floated='right' size='large'>Follow</Button>
             </List.Content>
             
             <List.Content>
