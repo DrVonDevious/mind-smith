@@ -1,6 +1,9 @@
 import React, { useState , useEffect } from 'react';
 import Channel from './Channel'
 
+import { List } from 'semantic-ui-react'
+
+
 const Channels = (props) => {
     const [channels, setChannels] = useState([]);
 
@@ -13,9 +16,11 @@ const Channels = (props) => {
 
 
        return (
-        <div>
-         {channels.map(channel => <Channel channel={channel}/>)}
-        </div>
+         <div class="col-lg-8 col-md-8">
+          <List divided verticalAlign='middle'>
+         {channels.map(channel => <Channel  channel={channel}/>)}
+         </List>
+         </div>
       );
 }
 
