@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 const LoginForm = (props) => (
+
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
@@ -18,7 +19,6 @@ const LoginForm = (props) => (
             placeholder='Password'
             type='password'
           />
-
           <Button  color='teal' fluid size='large'>
             Login
           </Button>
@@ -29,6 +29,7 @@ const LoginForm = (props) => (
       </Message>
     </Grid.Column>
   </Grid>
+
 )
 
 export default LoginForm
