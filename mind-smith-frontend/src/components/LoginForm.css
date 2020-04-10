@@ -1,0 +1,11 @@
+.login {
+  position: fixed;
+  z-index: 2;
+}
+
+.close-button {
+  position: relative;
+  top: 60px;
+  left: 424px;
+  z-index: 2;
+}

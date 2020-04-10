@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import './LoginForm.css'
+import CloseOverlay from './CloseOverlay'
 
 const LoginForm = (props) => (
-
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-    <Grid.Column style={{ maxWidth: 450 }}>
+    <Grid.Column className="login" style={{ maxWidth: 450 }}>
+      <div className="close-button" onClick={props.handleCloseOverlay}>
+        <i class="close icon" style={{fontSize: "2em", zIndex: 4}}></i>
+      </div>
       <Header as='h2' color='teal' textAlign='center'>
         {/* <Image src='/logo.png' />  */}
         Log-in to your account
@@ -29,7 +33,6 @@ const LoginForm = (props) => (
       </Message>
     </Grid.Column>
   </Grid>
-
 )
 
 export default LoginForm

@@ -8,7 +8,7 @@ import Channels from './components/Channels'
 
 function App() {
 
-  const [currentPage, setCurrentPage] = useState("home")
+  const [currentPage, setCurrentPage] = useState("profile")
   const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
 
@@ -22,12 +22,17 @@ function App() {
     }
   }
 
+  const closeOverlay = () => {
+    setRegisterOverlay(false)
+    setLoginOverlay(false)
+  }
+
   return (
     <div >
       <Navbar handleLoginRegister={showLoginRegister} />
       {/* <Channels/> */}
-      {loginOverlay && <Login />}
-      {registerOverlay && <Register />}
+      {loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
+      {registerOverlay && <Register handleCloseOverlay={closeOverlay}/>}
       {currentPage === "profile" ? <ProfileContainer /> : null}
     </div>
   );
