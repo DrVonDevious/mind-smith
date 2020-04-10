@@ -15,8 +15,9 @@ class ChannelsController < ApplicationController
     end
 
     def create
-        @channel = Action.create(channel_params)
+        @channel = Channel.create(channel_params)
         render json: @channel
+
     end
 
     def edit
@@ -32,7 +33,7 @@ class ChannelsController < ApplicationController
     private
 
     def channel_params
-        params.require(:channel).permit(:name)
+        params.require(:channel).permit(:name, :description)
     end
 
     def find_channel
