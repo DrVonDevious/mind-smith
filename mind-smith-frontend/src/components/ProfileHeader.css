@@ -1,0 +1,23 @@
+.profile-header {
+  display: flex;
+  padding-left: 80px;
+}
+
+.profile-img {
+  border-radius: 200px;
+  max-width: 220px;
+}
+
+.profile-info {
+  display: block;
+  padding-left: 40px;
+  padding-top: 20px;
+}
+
+.profile-name {
+  color: #00B5AD;
+}
+
+.profile-bio {
+
+}

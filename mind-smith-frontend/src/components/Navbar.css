@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  background-color: #00B5AD;
+  min-height: 46px;
+}
+
+.navbar-brand {
+  border: none;
+  background-color: transparent;
+}
+
+.navbar-link {
+  border: none;
+  background-color: transparent;
+  position: relative;
+  left: 70vw;
+}
