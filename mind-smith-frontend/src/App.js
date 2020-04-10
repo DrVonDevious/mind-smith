@@ -8,12 +8,22 @@ import Channels from './components/Channels'
 function App() {
 
   const [currentPage, setCurrentPage] = useState("home")
-  const [loginOverlay, setLoginOverlay] = useState(true)
+  const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
+
+  const showLoginRegister = (e) => {
+    if (e === "login") {
+      setRegisterOverlay(false)
+      setLoginOverlay(true)
+    } else {
+      setRegisterOverlay(true)
+      setLoginOverlay(false)
+    }
+  }
 
   return (
     <div >
-      <Navbar />
+      <Navbar handleLoginRegister={showLoginRegister} />
       <Channels/>
       {loginOverlay && <Login />}
       {registerOverlay && <Register />}

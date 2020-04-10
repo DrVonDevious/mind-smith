@@ -33,7 +33,7 @@ const Register = () => (
       </Form>
     </Grid.Column>
   </Grid>
-  )
-  
-  export default Register
-  
+)
+
+export default Register
+
