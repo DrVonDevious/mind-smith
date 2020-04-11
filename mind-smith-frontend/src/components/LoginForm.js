@@ -6,9 +6,10 @@ const LoginForm = (props) => {
 
   const login = (e) => {
     e.preventDefault()
+    // Testing
     props.users.find(user => user.username === e.target[0].value) 
-      ? 
-      : console.log("no")
+      ? console.log("found")
+      : console.log("not found")
   }
 
   return (
