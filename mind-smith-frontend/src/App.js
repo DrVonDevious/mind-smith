@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar'
 import Login from './components/LoginForm'
 import Register from './components/Register'
@@ -13,6 +13,15 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home")
   const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then(res => res.json())
+      .then(users => {
+        setUsers(users)
+      })
+  }, [])
 
   const showLoginRegister = (e) => {
     if (e === "login") {
@@ -36,8 +45,8 @@ function App() {
   return (
     <div >
       <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage}/>
-      {loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
-      {registerOverlay && <Register handleCloseOverlay={closeOverlay}/>}
+      {loginOverlay && <Login handleCloseOverlay={closeOverlay} users={users}/>}
+      {registerOverlay && <Register setCurrentUser={(e) => setCurrentUser(e)} handleCloseOverlay={closeOverlay}/>}
       {currentPage === "profile" ? <ProfileContainer /> : null}
       {currentPage === "channels" ? <Channels /> : null}
     </div>

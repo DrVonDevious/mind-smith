@@ -8,19 +8,16 @@ const Register = (props) => {
     e.preventDefault()
     fetch("http://localhost:3000/users", {
       method: "POST",
-      headers: { "Content-Type": "application/json",
-                 "Accept": "application/json"},
+      headers: { "Content-Type": "application/json"},
       body: JSON.stringify({
         username: e.target[0].value,
         password_digest: e.target[1].value,
+        bio: "",
+        img_url: ""
       })
     })
-      .then(res => res.json())
-      .then(user => {
-        console.log(user)
-      })
+    //TODO: Fix fetch getting a cors response that wont allow .then()
   }
-
 
   return (
     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
