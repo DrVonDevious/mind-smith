@@ -6,7 +6,6 @@ Post.destroy_all()
 Channel.destroy_all()
 User.destroy_all()
 
-
 u1 = User.create(username: "Somaia", password_digest: "guest", bio: "Cracking skulls with mad code skills all the way from the UAE to the USA", img_url: "https://ca.slack-edge.com/T02MD9XTF-UT57884MV-8720f9540343-512")
 u2 = User.create(username: "DrVonDevious", password_digest: "guest", bio: "Existence is suffering, so you might as well use Vim", img_url: "https://ca.slack-edge.com/T02MD9XTF-UT02BHX47-1e2b6e51a86d-512")
 u3 = User.create(username: "SaintRobDub", password_digest: "guest", bio: "Locksmith turned coder, so now I can break into your computer AND your house", img_url: "https://ca.slack-edge.com/T02MD9XTF-USLN1N0SX-639efefc59a2-512")

@@ -1,0 +1,13 @@
+.navbar-search {
+  position: relative;
+  left: 60vw;
+  padding-top: 11px;
+}
+
+.search {
+  height: 23px;
+  width: 200px;
+  padding-left: 12px;
+  border: none;
+  border-radius: 20px;
+}

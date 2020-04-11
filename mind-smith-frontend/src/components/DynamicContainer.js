@@ -15,7 +15,7 @@ export default class DynamicContainer extends Component {
 
     render() {
         return (
-            <PostView postId={1} />
+            <PostView postId={8} />
         )
     }
 

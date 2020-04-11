@@ -1,33 +1,51 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Header, Container } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Button, Header, Container, Image } from 'semantic-ui-react'
 
-const PostView = (props) => {
+class PostView extends Component {
 
-    const postId = useState(props.postId);
-    const postInfo = useState(0);
+    constructor(props) {
+        super(props)
+        this.state = {
+            postId: this.props.postId
+        }
+    }
 
-    // const getDocumentInfo = (postId) => {
-    fetch(`http://localhost:3000/posts/${postId}`)
-        .then(response => response.json())
-        .then(postInfo => { debugger })
-    // }
+    getPostInfo = () => {
+        fetch(`http://localhost:3000/posts/${this.state.postId}`)
+            .then(response => response.json())
+            .then(postInfo => {
+                this.setState({
+                    title: postInfo.post.title,
+                    body: postInfo.post.body,
+                    author: postInfo.post.author,
+                    authorImage: postInfo.post.authorImage,
+                    channel: postInfo.post.channel,
+                    similarPostsChannel: postInfo.similarPosts.byChannel
+                })
+            })
+    }
 
-    // useEffect(() => {
-    //     getDocumentInfo(postId)
-    // })
+    componentDidMount() {
+        this.getPostInfo()
+    }
 
-    return (postInfo === null
-        ? <Container text><Header as='h2'>Loading...</Header></Container>
-        : <Container text>
-            <Header as='h2'>{postInfo.title}</Header>
-            <p>
-                {postInfo.body}
-            </p>
-            <p>MindSmith: {postInfo.user}</p>
-            <p>Channel: {postInfo.channel}</p>
-            <Button>Click Me</Button>
-        </Container>
-    )
+    render() {
+        return (this.state.postInfo === null
+            ? <Container key="Post" text><Header as='h2'>Loading...</Header></Container>
+            : [<Container text>
+                <Header as='h2'>{this.state.title}</Header>
+                <p>
+                    {this.state.body}
+                </p>
+                <Image src={this.state.authorImage} avatar />
+                <span>MindSmith: {this.state.author}</span>
+                <p>Channel: {this.state.channel}</p>
+                <Button>Click Me</Button>
+            </Container >,
+            <Container key="Suggested" text>Suggested Posts</Container>
+            ]
+        )
+    }
 }
 
 export default PostView
