@@ -43,7 +43,7 @@ function App() {
   const displayCurrentPage = () => {
     switch (currentPage) {
       case "profile": return <ProfileContainer />
-      case "channels": return <Channels/>
+      case "channels": return <Channels currentUser={currentUser}/>
     }
   }
 
@@ -51,11 +51,16 @@ function App() {
     setCurrentPage(e)
   }
 
+  const handleLogout = () =>{
+    setCurrentUser(null)
+    //toDo clear token here
+  }
+
 
 
   return (
     <div >
-      <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage}/>
+      <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage} handleLogout={handleLogout}/>
       {!currentUser && loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
       {!currentUser &&registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
       {displayCurrentPage()}
