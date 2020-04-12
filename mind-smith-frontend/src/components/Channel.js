@@ -3,6 +3,19 @@ import { Button, Image, List ,Segment, Header} from 'semantic-ui-react'
 
 const Channel = (props) => {
     // const [channel, setChannels] = useState([]);
+    const followChannel = (channel) => {
+        fetch("http://localhost:3000/subscriptions",{
+            method: "POST",
+            headers:{"Content-Type": "application/json",  Accept: "application/json"},
+            body:JSON.stringify({
+                subscription:{
+                    user_id: props.currentUser.id,
+                channel_id: channel.id
+                }
+             })
+        }).then(res => res.json())
+        .then(sub => console.log(sub))
+    }
 
 
        return (
@@ -13,7 +26,7 @@ const Channel = (props) => {
         < Segment stacked>
             <List.Item>
             <List.Content floated='right'>
-                <Button onClick={null}color='teal' floated='right' size='large'>Follow</Button>
+                <Button onClick={()=>followChannel(props.channel)}color='teal' floated='right' size='large'>Follow</Button>
             </List.Content>
             
             <List.Content>
