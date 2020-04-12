@@ -13,9 +13,9 @@ const LoginForm = (props) => {
   }
 
   return (
-    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-      <Grid.Column className="login" style={{ maxWidth: 450 }}>
-        <div className="close-button" onClick={props.handleCloseOverlay}>
+    <Grid className="login" textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid.Column className="modal-content" style={{ maxWidth: 450 }}>
+        <div  onClick={props.handleCloseOverlay}>
           <i class="close icon" style={{fontSize: "2em", zIndex: 4}}></i>
         </div>
         <Header as='h2' color='teal' textAlign='center'>
