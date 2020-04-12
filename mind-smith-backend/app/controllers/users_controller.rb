@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(strong_params)
+    render json: user
   end
 
   def delete

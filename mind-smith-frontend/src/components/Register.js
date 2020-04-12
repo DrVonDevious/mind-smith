@@ -5,18 +5,19 @@ import './Register.css'
 const Register = (props) => {
 
   const handleRegister = (e) => {
-    e.preventDefault()
+     let form = e.target
+     e.preventDefault()
     fetch("http://localhost:3000/users", {
       method: "POST",
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json",  Accept: "application/json"},
       body: JSON.stringify({
-        username: e.target[0].value,
-        password_digest: e.target[1].value,
+        username: form[0].value,
+        password_digest: form[1].value,
         bio: "",
         img_url: ""
       })
-    })
-    //TODO: Fix fetch getting a cors response that wont allow .then()
+    }).then(res => res.json())
+    .then(user => props.setUser(user))
   }
 
   return (
