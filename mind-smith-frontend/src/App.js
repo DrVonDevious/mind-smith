@@ -14,7 +14,7 @@ function App() {
   const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
   const [users, setUsers] = useState([])
-  
+
 
 
   useEffect(() => {
@@ -61,8 +61,8 @@ function App() {
   return (
     <div >
       <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage} handleLogout={handleLogout}/>
-      {!currentUser && loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
-      {!currentUser &&registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
+      {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
+      {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
       {displayCurrentPage()}
       <SideBar/>
     </div>

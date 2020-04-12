@@ -5,13 +5,9 @@ import './LoginForm.css'
 const LoginForm = (props) => {
 
   const login = (e) => {
-    let form = e.target
     e.preventDefault()
-    // Testing
-    props.users.find(user => user.username === e.target[0].value) 
-      ? console.log("found")
-      : console.log("not found")
-    // fetch()
+    var user = props.users.find(user => user.username === e.target[0].value && user.password_digest === e.target[1].value)
+    user ? props.setUser(user) : alert("Username or Password is incorrect")
   }
 
   return (
