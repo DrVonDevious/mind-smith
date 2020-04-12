@@ -9,12 +9,13 @@ import SideBar from './components/SideBar'
 function App() {
 
   // TODO: Should use actual authentication because we dont want to end up like Zoom :(
-  const [currentUser, setCurrentUser] = useState({})
-
+  const [currentUser, setCurrentUser] = useState(null)
   const [currentPage, setCurrentPage] = useState("home")
   const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
   const [users, setUsers] = useState([])
+  
+
 
   useEffect(() => {
     fetch("http://localhost:3000/users")
@@ -45,16 +46,18 @@ function App() {
       case "channels": return <Channels/>
     }
   }
-  
+
   const changePage = (e) => {
     setCurrentPage(e)
   }
 
+
+
   return (
     <div >
       <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage}/>
-      {loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
-      {registerOverlay && <Register handleCloseOverlay={closeOverlay}/>}
+      {!currentUser && loginOverlay && <Login handleCloseOverlay={closeOverlay}/>}
+      {!currentUser &&registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
       {displayCurrentPage()}
       <SideBar/>
     </div>
