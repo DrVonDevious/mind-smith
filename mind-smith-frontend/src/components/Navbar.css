@@ -14,6 +14,11 @@ button {
   box-shadow:  0 6px 4px -4px rgba(0,0,0,0.7);
 }
 
+.navbar-profile {
+  max-width: 25px;
+  border-radius: 20px;
+}
+
 .navbar-brand {
   font-family: 'Pacifico', cursive;
   font-size: 1.6em;

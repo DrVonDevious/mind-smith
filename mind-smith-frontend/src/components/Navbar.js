@@ -16,7 +16,7 @@ const Navbar = (props) => {
         {!props.currentUser && <button className="navbar-link" onClick={() => props.handleLoginRegister("login")}>Login</button>}
         {!props.currentUser &&<button className="navbar-link" onClick={() => props.handleLoginRegister("register")}>Register</button>}
         <button className="navbar-link" onClick={() => props.handleChangePage("channels")}>Channels</button>
-        {props.currentUser && <img  className="navbar-profile" src="props.currentUser.img_url" />}
+        {props.currentUser && <img className="navbar-profile" src='https://edsurge.imgix.net/uploads/post/image/12176/coding-1556754232.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop' />}
       </div>
     </div>
   )
