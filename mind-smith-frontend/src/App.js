@@ -13,7 +13,7 @@ function App() {
 
   // TODO: Should use actual authentication because we dont want to end up like Zoom :(
   const [currentUser, setCurrentUser] = useState(null)
-  const [currentPage, setCurrentPage] = useState("home")
+  const [currentPage, setCurrentPage] = useState("channels") // Set to home once it's created
   const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
   const [users, setUsers] = useState([])
