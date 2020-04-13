@@ -51,7 +51,7 @@ const Channels = (props) => {
            <br/>
           <Card fluid >
           <List divided verticalAlign='middle'>
-          {channels.map(channel => <Channel currentUser={props.currentUser}  channel={channel}/>)}
+          {channels.map(channel => <Channel setChannel={props.setChannel} changePage={props.changePage} currentUser={props.currentUser}  channel={channel}/>)}
          </List>
          </Card>
          </div>
