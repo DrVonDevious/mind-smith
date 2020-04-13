@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar'
 import Login from './components/LoginForm'
 import Register from './components/Register'
+import DynamicContainer from './components/DynamicContainer'
 import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 import SideBar from './components/SideBar'
 import ChannelPosts from './components/ChannelPosts'
 
 function App() {
+
 
   // TODO: Should use actual authentication because we dont want to end up like Zoom :(
   const [currentUser, setCurrentUser] = useState(null)
@@ -65,12 +67,13 @@ function App() {
 
   return (
     <div >
+
       <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage} handleLogout={handleLogout}/>
       {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
       {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
       {displayCurrentPage()}
       <SideBar/>
-      
+
     </div>
   );
 }
