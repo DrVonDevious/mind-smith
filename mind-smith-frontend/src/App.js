@@ -10,7 +10,6 @@ import ChannelPosts from './components/ChannelPosts'
 
 function App() {
 
-
   // TODO: Should use actual authentication because we dont want to end up like Zoom :(
   const [currentUser, setCurrentUser] = useState(null)
   const [currentPage, setCurrentPage] = useState("channels") //TODO: Set to home once it's created

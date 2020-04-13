@@ -8,7 +8,7 @@ const Navbar = (props) => {
       <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
       <button className="navbar-brand" onClick={() => props.handleChangePage("home")}>MindSmith</button>
       <div className="navbar-right">
-        <NavbarSearch users={props.users} channels={props.channels} />
+        <NavbarSearch users={props.users} channels={props.channels} handleChangePage={props.handleChangePage} />
         {/* <button className="navbar-link">{props.currentUser&&` Welcome ${props.currentUser.username}`}</button> */}
         {props.currentUser && <button onClick={props.handleLogout} className="navbar-link" >Logout</button>}
         {!props.currentUser && <button className="navbar-link" onClick={() => props.handleLoginRegister("login")}>Login</button>}
