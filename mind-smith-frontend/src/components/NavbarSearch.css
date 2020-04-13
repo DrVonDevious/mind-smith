@@ -1,7 +1,5 @@
 .navbar-search {
-  position: fixed;
-  left: 60vw;
-  padding-top: 11px;
+  margin-right: 20px;
 }
 
 .search {

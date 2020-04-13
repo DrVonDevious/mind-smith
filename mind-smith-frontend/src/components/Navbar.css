@@ -16,22 +16,24 @@ button {
 
 .navbar-profile {
   max-width: 25px;
+  max-height: 25px;
   border-radius: 20px;
+  margin-left: 8px;
 }
 
 .navbar-brand {
   font-family: 'Pacifico', cursive;
   font-size: 1.6em;
-  position: fixed;
-  left: 10px;
-  padding-top: 8px;
+  padding-top: 14px;
+  padding-left: 40px;
 }
 
 .navbar-right {
+  position: absolute;
+  left: 60%;
   display: flex;
-  position: fixed;
-  left: 83vw;
-  padding-top: 9px;
+  padding-top: 12px;
+  padding-right: 200px;
 }
 
 .navbar-link {
