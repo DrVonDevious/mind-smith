@@ -45,16 +45,13 @@ const Channels = (props) => {
       }
 
        return (
-         <div class="col-lg-8 col-md-8">
-         <br/>
-         <br/>
-         <br/>
-         <br/>
-         <br/>
+         <div className ="col-lg-8 col-md-8">
            {showcreatechannel? <CreateChannelForm handleChannelCreate={handleChannelCreate} /> :<Button onClick={()=>setShowcreatechannel(true)}color='teal' floated='right' size='large'>Create a new channel</Button>}
+           <br/>
+           <br/>
           <Card fluid >
           <List divided verticalAlign='middle'>
-          {channels.map(channel => <Channel  channel={channel}/>)}
+          {channels.map(channel => <Channel setChannel={props.setChannel} changePage={props.changePage} currentUser={props.currentUser}  channel={channel}/>)}
          </List>
          </Card>
          </div>

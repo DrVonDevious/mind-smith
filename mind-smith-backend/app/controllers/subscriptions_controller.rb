@@ -15,6 +15,7 @@ class SubscriptionsController < ApplicationController
     end
 
     def create
+        # byebug
         @subscription = Subscription.create(subscription_params)
         render json: @subscription
     end
@@ -32,7 +33,7 @@ class SubscriptionsController < ApplicationController
     private
 
     def subscription_params
-        params.require(:subscription).permit(user_id , channel_id)
+        params.require(:subscription).permit(:user_id, :channel_id)
     end
 
     def find_subscription

@@ -1,18 +1,41 @@
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
 .navbar {
   display: flex;
   border-radius: 0px;
   background-color: #00B5AD;
   min-height: 46px;
+  min-width: 120vw;
+  left: -20px;
+  box-shadow:  0 6px 4px -4px rgba(0,0,0,0.7);
+}
+
+.navbar-profile {
+  max-width: 25px;
+  border-radius: 20px;
 }
 
 .navbar-brand {
-  border: none;
-  background-color: transparent;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.6em;
+  position: fixed;
+  left: 10px;
+  padding-top: 8px;
+}
+
+.navbar-right {
+  display: flex;
+  position: fixed;
+  left: 83vw;
+  padding-top: 9px;
 }
 
 .navbar-link {
-  border: none;
-  background-color: transparent;
-  position: relative;
-  left: 64vw;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: roboto;
 }
