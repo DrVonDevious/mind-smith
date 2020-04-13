@@ -1,11 +1,16 @@
 .profile-header {
   display: flex;
-  padding-left: 80px;
+  padding-left: 40px;
+  padding-top: 20px;
+  padding-bottom: 80px;
 }
 
 .profile-img {
   border-radius: 200px;
-  max-width: 220px;
+  object-fit: cover;
+  width: 220px;
+  height: 220px;
+  box-shadow: 3px 8px 8px;
 }
 
 .profile-info {
