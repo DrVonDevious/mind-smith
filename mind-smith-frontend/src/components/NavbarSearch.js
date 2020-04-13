@@ -2,31 +2,36 @@ import React, { useState } from 'react'
 import './NavbarSearch.css'
 import Autosuggest from 'react-autosuggest';
 
+// BUNCH OF COPY PASTA FROM Autosuggest
 const NavbarSearch = (props) => {
 
   const [value, setValue] = useState("")
   const [suggestions, setSuggestions] = useState([])
 
+  const escapeRegexCharacters = (str) => {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  }
+
   const getSuggestions = (value) => {
-    const inputValue = value.trim().toLowerCase()
-    const inputLength = inputValue.length
+    const escapedValue = escapeRegexCharacters(value.trim())
 
-    if (inputLength === 0) { return [] }
+    if (escapedValue === "") {
+      return []
+    }
+
+    const regex = new RegExp("^" + escapedValue, "i")
+
     return(
-      props.channels.filter(channel => channel.name.toLowerCase().slice(0, inputLength) === inputValue)
+      props.channels.filter(channel => regex.test(channel.name))
     )
   }
 
-  const renderSuggestion = (suggestion) => {
-    return (
-      <div>
-        {suggestion.name}
-      </div>
-    )
-  }
+  const renderSuggestion = (suggestion) => (
+    <span>{suggestion.name}</span>
+  )
 
   const getSuggestionValue = (suggestion) => {
-    return suggestion.value
+    return suggestion.name
   }
 
   const handleChange = (value) => {
@@ -47,24 +52,29 @@ const NavbarSearch = (props) => {
     onChange: (e) => handleChange(e.target.value)
   }
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    var c = props.channels.find(c => c.name === value)
+    if (c) {
+      props.setChannel(c)
+      props.handleChangePage("channel")
+    }
+  }
+
   return (
     <div>
-      <form autocomplete="off" onSubmit={(e) => { props.handleChangePage(value.toLowerCase()); e.preventDefault()}}>
+      <form autocomplete="off" onSubmit={(e) => onSubmit(e)}>
         <div className="navbar-search">
           <Autosuggest
             suggestions={suggestions}
-            renderSuggestion={renderSuggestion}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
             onSuggestionsClearRequested={onSuggestionsClearRequested}
-            inputProps={inputProps}
             getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
+            inputProps={inputProps}
           />
         </div>
       </form>
-      <datalist id="suggestions">
-        {props.users.map(u => <option>{u.username}</option>)}
-        {props.channels.map(c => <option>{c.name}</option>)}
-      </datalist>
     </div>
   )
 }

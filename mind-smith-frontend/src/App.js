@@ -69,9 +69,6 @@ function App() {
   }
 
 
-
-
-
   return (
     <div >
 
@@ -81,6 +78,7 @@ function App() {
               handleLoginRegister={showLoginRegister}
               handleChangePage={changePage}
               handleLogout={handleLogout}
+              setChannel={setChannel}
       />
 
       {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
