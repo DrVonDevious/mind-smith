@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Container, Image } from 'semantic-ui-react'
+import { Button, Header, Card, Image, List } from 'semantic-ui-react'
 
 class PostView extends Component {
 
@@ -20,7 +20,8 @@ class PostView extends Component {
                     author: postInfo.post.author,
                     authorImage: postInfo.post.authorImage,
                     channel: postInfo.post.channel,
-                    similarPostsChannel: postInfo.similarPosts.byChannel
+                    similarPostsChannel: postInfo.similarPosts.byChannel,
+                    similarPostsTag: postInfo.similarPosts.byTag
                 })
             })
     }
@@ -29,21 +30,33 @@ class PostView extends Component {
         this.getPostInfo()
     }
 
+    postContent = () => {
+        return (
+            <div className="col-lg-8 col-md-8">
+                <Card fluid text>
+                    <Header as='h2'>{this.state.title}</Header>
+                    <p>
+                        {this.state.body}
+                    </p>
+                    <Image src={this.state.authorImage} avatar />
+                    <span>MindSmith: {this.state.author}</span>
+                    <p>Channel: {this.state.channel}</p>
+                    <Button>Click Me</Button>
+                </Card >
+                <Card fluid key="Suggested">
+                    <List divided verticalAlign="middle">Suggested posts
+                        {console.log(this.state)}
+                        {this.state.similarPostsChannel ? this.state.similarPostsChannel.map(post => <Card><Header as="h3">{post.title}</Header><Header as="h4">{post.body.slice(0, 25)}...</Header></Card>) : "Loading..."}
+                    </List>
+                </Card>
+            </div>
+        )
+    }
     render() {
-        return (this.state.postInfo === null
-            ? <Container key="Post" text><Header as='h2'>Loading...</Header></Container>
-            : [<Container text>
-                <Header as='h2'>{this.state.title}</Header>
-                <p>
-                    {this.state.body}
-                </p>
-                <Image src={this.state.authorImage} avatar />
-                <span>MindSmith: {this.state.author}</span>
-                <p>Channel: {this.state.channel}</p>
-                <Button>Click Me</Button>
-            </Container >,
-            <Container key="Suggested" text>Suggested Posts</Container>
-            ]
+        return (
+            this.state.postInfo === null
+                ? <Card key="Post" text><Header as='h3'>Loading...</Header></Card>
+                : this.postContent()
         )
     }
 }
