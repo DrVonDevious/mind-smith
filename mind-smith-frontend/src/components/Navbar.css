@@ -15,6 +15,7 @@ button {
 }
 
 .navbar-profile {
+  cursor: pointer;
   max-width: 25px;
   max-height: 25px;
   border-radius: 20px;
@@ -22,6 +23,7 @@ button {
 }
 
 .navbar-brand {
+  cursor: pointer;
   font-family: 'Pacifico', cursive;
   font-size: 1.6em;
   padding-top: 14px;
@@ -30,7 +32,7 @@ button {
 
 .navbar-right {
   position: absolute;
-  left: 60%;
+  left: 59%;
   display: flex;
   padding-top: 12px;
   padding-right: 200px;

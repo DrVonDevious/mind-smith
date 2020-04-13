@@ -5,15 +5,7 @@ import CreateChannelForm from './CreateChannelForm'
 
 
 const Channels = (props) => {
-    const [channels, setChannels] = useState([]);
     const [showcreatechannel, setShowcreatechannel] = useState(false);
-
-    useEffect(() => {
-      // Update the document title using the browser API
-      fetch("http://localhost:3000/channels")
-      .then(res => res.json())
-      .then(channels => setChannels(channels))
-    }, [])
 
     const handleChannelCreate = (e) =>{
       let form = e.target
@@ -34,7 +26,7 @@ const Channels = (props) => {
       .then(res => res.json())
       .then(channel=> 
         {
-          setChannels([...channels , channel])
+          props.onCreateChannel(channel)
           setShowcreatechannel(false)
        })
     }
@@ -51,7 +43,7 @@ const Channels = (props) => {
 
          <Card fluid >
            <List divided verticalAlign='middle'>
-             {channels.map(channel => <Channel setChannel={props.setChannel} changePage={props.changePage} currentUser={props.currentUser}  channel={channel}/>)}
+             {props.channels.map(channel => <Channel setChannel={props.setChannel} changePage={props.changePage} currentUser={props.currentUser}  channel={channel}/>)}
            </List>
          </Card>
        </div>
