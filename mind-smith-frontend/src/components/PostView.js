@@ -48,4 +48,32 @@ class PostView extends Component {
     }
 }
 
+// {/* <!-- POST --> */}
+// <div className="post">
+// <div className="topwrap">
+//     <div className="userinfo pull-left">
+//         <div className="avatar">
+//             <img src="images/avatar3.jpg" alt="" />
+//         </div>
+//     </div>
+//     <div className="posttext pull-left">
+//         <p>post text here</p>
+//     </div>
+//     <div className="clearfix"></div>
+// </div>                              
+// <div className="postinfobot">
+
+//     <div className="likeblock pull-left">
+//         <a href="#" className="up"><i className="fa fa-thumbs-o-up"></i>55</a>
+//         <a href="#" className="down"><i className="fa fa-thumbs-o-down"></i>12</a>
+//     </div>
+
+//     <div className="posted pull-left">Posted on : 20 Nov @ 9:50am</div>
+
+//     <div className="clearfix"></div>
+// </div>
+// </div>
+// {/* <!-- POST --> */}
+
+
 export default PostView

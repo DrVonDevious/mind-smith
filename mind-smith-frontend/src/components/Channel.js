@@ -23,25 +23,52 @@ const Channel = (props) => {
         //  <h2>{props.channel.name}</h2>
         //  <h2>{props.channel.description}</h2>
 
-        < Segment stacked>
-            <List.Item>
-            <List.Content floated='right'>
-                <Button onClick={()=>followChannel(props.channel)}color='teal' floated='right' size='large'>Follow</Button>
-            </List.Content>
+        // < Segment stacked>
+        //     <List.Item>
+        //     <List.Content floated='right'>
+        //         <Button onClick={()=>followChannel(props.channel)}color='teal' floated='right' size='large'>Follow</Button>
+        //     </List.Content>
             
-            <List.Content>
-                <Image avatar src='https://edsurge.imgix.net/uploads/post/image/12176/coding-1556754232.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop' />
-                <Header  onClick={()=>{ props.changePage("channelPosts"); props.setChannel(props.channel)} } as='h2'> 
-                    <a>{props.channel.name}</a>
-                </Header>
-            </List.Content>
-            <List.Content>
-                <Header as='h3'>
-                {props.channel.description}
-                </Header >
-            </List.Content>
-            </List.Item>
-            </Segment>
+        //     <List.Content>
+        //         <Image avatar src='https://edsurge.imgix.net/uploads/post/image/12176/coding-1556754232.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop' />
+        //         <Header  onClick={()=>{ props.changePage("channelPosts"); props.setChannel(props.channel)} } as='h2'> 
+        //             <a>{props.channel.name}</a>
+        //         </Header>
+        //     </List.Content>
+        //     <List.Content>
+        //         <Header as='h3'>
+        //         {props.channel.description}
+        //         </Header >
+        //     </List.Content>
+        //     </List.Item>
+        //     </Segment>
+
+            // {/* <!-- Channel --> */}
+                <div className="post">
+                <div className="wrap-ut pull-left">
+                    <div className="userinfo pull-left">
+                        <div className="avatar"><img src='https://edsurge.imgix.net/uploads/post/image/12176/coding-1556754232.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop' alt="" /></div>
+                    </div>
+                    <div className="posttext">
+                        <h2 ><a href="#" onClick={()=>{ props.changePage("channelPosts"); props.setChannel(props.channel)} }>{props.channel.name}</a></h2>
+                        <p>{props.channel.description}</p>
+                    </div>
+                    <div className="clearfix"></div>
+                </div>
+                
+                    <div className="comments">
+                        <div className="commentbg">
+                            {props.channel.posts.length} posts
+                            <div className="mark"></div>
+                        </div>
+                    </div>
+             
+                        <Button onClick={()=>followChannel(props.channel)}color='teal' floated='right' size='large'>Follow</Button>  
+          
+                <div className="clearfix"></div>
+            </div>
+//   {/* <!-- Channel --> */}
+        
         )
 }
 
