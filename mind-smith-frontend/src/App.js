@@ -47,9 +47,34 @@ function App() {
     setLoginOverlay(false)
   }
 
+  const updateUser = (e, section) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/users/${currentUser.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: section === "username" ? e.target[0].value : currentUser.username,
+        bio: section === "bio" ? e.target[0].value : currentUser.bio,
+        img_url: section === "img" ? e.target[0].value : currentUser.img_url
+      })
+    })
+    switch(section) {
+      case "bio":
+        setCurrentUser((user) => { return {...user, bio: e.target[0].value }})
+        break
+      case "img":
+        setCurrentUser((user) => { return {...user, img_url: e.target[0].value }})
+        break
+      case "username":
+        setCurrentUser((user) => { return {...user, username: e.target[0].value }})
+        break
+      default: return null
+    }
+  }
+
   const displayCurrentPage = () => {
     switch (currentPage) {
-      case "profile": return <ProfileContainer />
+      case "profile": return <ProfileContainer user={currentUser} handleUpdateUser={updateUser}/>
       case "channels": return <Channels onCreateChannel={onCreateChannel} channels={channels} setChannel={setChannel} changePage={changePage} currentUser={currentUser}/>
       case "channelPosts": return <ChannelPosts channel={channel}/>
     }
@@ -84,7 +109,7 @@ function App() {
       {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
       {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
       {displayCurrentPage()}
-      <SideBar/>
+      {!currentPage === "profile" ? <SideBar/> : null}
 
     </div>
   );

@@ -30,9 +30,11 @@ class PostView extends Component {
     }
 
     render() {
-        return (this.state.postInfo === null
+        return (
+          this.state.postInfo === null
             ? <Container key="Post" text><Header as='h2'>Loading...</Header></Container>
-            : [<Container text>
+            : [
+              <Container text>
                 <Header as='h2'>{this.state.title}</Header>
                 <p>
                     {this.state.body}
