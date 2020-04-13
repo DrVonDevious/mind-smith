@@ -31,8 +31,8 @@ const Channel = (props) => {
             
             <List.Content>
                 <Image avatar src='https://edsurge.imgix.net/uploads/post/image/12176/coding-1556754232.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop' />
-                <Header as='h2'>
-                {props.channel.name}
+                <Header  onClick={()=>{ props.changePage("channelPosts"); props.setChannel(props.channel)} } as='h2'> 
+                    <a>{props.channel.name}</a>
                 </Header>
             </List.Content>
             <List.Content>

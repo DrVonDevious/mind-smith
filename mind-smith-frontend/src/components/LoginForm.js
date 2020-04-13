@@ -6,7 +6,9 @@ const LoginForm = (props) => {
 
   const login = (e) => {
     e.preventDefault()
+    console.log(props.user)
     var user = props.users.find(user => user.username === e.target[0].value && user.password_digest === e.target[1].value)
+    console.log(user)
     user ? props.setUser(user) : alert("Username or Password is incorrect")
   }
 
