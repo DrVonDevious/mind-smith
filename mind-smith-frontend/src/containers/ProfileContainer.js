@@ -20,7 +20,7 @@ const ProfileContainer = (props) => {
   }, [])
 
   return (
-    <div className="profile">
+    <div>
       <ProfileHeader handleUpdateUser={props.handleUpdateUser} user={props.user}/>
       <ProfilePostsContainer posts={posts} />
     </div>

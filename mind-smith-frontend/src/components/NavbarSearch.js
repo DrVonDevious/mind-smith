@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import './NavbarSearch.css'
 import Autosuggest from 'react-autosuggest';
+import {useHistory} from "react-router-dom"
 
 // BUNCH OF COPY PASTA FROM Autosuggest
 const NavbarSearch = (props) => {
+
+  const history = useHistory()
 
   const [value, setValue] = useState("")
   const [suggestions, setSuggestions] = useState([])
@@ -55,9 +58,9 @@ const NavbarSearch = (props) => {
   const onSubmit = (e) => {
     e.preventDefault()
     var c = props.channels.find(c => c.name === value)
+
     if (c) {
-      props.setChannel(c)
-      props.handleChangePage("channel")
+      history.push(`/channelPosts/${c.id}`)
     }
   }
 
