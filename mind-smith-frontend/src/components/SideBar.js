@@ -1,16 +1,16 @@
 import React from 'react'
 import { Popup, Card, Image, Rating } from 'semantic-ui-react'
 
-const SideBar = () => (
+const SideBar = (props) => (
   
 
   <div className="col-lg-4 col-md-4">
   <div className="sidebarblock">
-      <h3>Channnels</h3>
+      <h3>Trending Channnels</h3>
       <div className="divline"></div>
       <div className="blocktxt">
           <ul className="cats">
-              <li><a href="#">Channel One <span className="badge pull-right">17</span></a></li>
+{props.channels.map(channel => <li><a onClick={ ()=>{props.changePage("channelPosts"); props.setChannel(channel)} } href="#">{channel.name}<span className="badge pull-right">{channel.posts.length}</span></a></li>)}
           </ul>
       </div>
   </div>

@@ -116,7 +116,7 @@ function App() {
       {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
       {displayCurrentPage()}
       {/* {!currentPage === "profile" ? <SideBar/> : null} */}
-      <SideBar></SideBar>
+      <SideBar channels={channels} setChannel={setChannel} changePage={changePage}/>
               </div>
             </div>
       </section>

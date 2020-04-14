@@ -13,7 +13,7 @@ const ChannelPosts = (props) => {
        fetch(`http://localhost:3000/channels/${props.channel.id}`)
        .then(res => res.json())
        .then(channel => setPosts(channel.posts))
-       }, [])
+       }, [props.channel])
 
        return (
         // <div>
