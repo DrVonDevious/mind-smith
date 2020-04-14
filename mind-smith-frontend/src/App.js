@@ -115,7 +115,8 @@ function App() {
       {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
       {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
       {displayCurrentPage()}
-      {!currentPage === "profile" ? <SideBar/> : null}
+      {/* {!currentPage === "profile" ? <SideBar/> : null} */}
+      <SideBar></SideBar>
               </div>
             </div>
       </section>
