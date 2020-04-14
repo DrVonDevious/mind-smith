@@ -63,7 +63,7 @@ const NavbarSearch = (props) => {
 
   return (
     <div>
-      <form autocomplete="off" onSubmit={(e) => onSubmit(e)}>
+      <form autoComplete="off" onSubmit={(e) => onSubmit(e)}>
         <div className="navbar-search">
           <Autosuggest
             suggestions={suggestions}

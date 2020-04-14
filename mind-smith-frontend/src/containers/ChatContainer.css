@@ -11,7 +11,7 @@
   box-shadow: 4px 4px 16px;
 }
 
-.header {
+.chat-header {
   display: flex;
   height: 50px;
   font-size: 18pt;

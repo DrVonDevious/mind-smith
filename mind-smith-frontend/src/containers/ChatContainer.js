@@ -1,10 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Message from '../components/Message.js'
 import './ChatContainer.css'
 
-const ChatContainer = () => {
+const ChatContainer = (props) => {
 
   const [showChat, setShowChat] = useState(false)
+  const [conversations, setConversations] = useState([])
+  const [messages, setMessages] = useState([])
+
+  const getMessages = () => {
+    fetch("http://localhost:3000/messages")
+      .then(res => res.json())
+      .then(messages => {
+        setMessages(messages.filter(m => m.user_id === props.currentUser.id || m.recipient_user_id === props.currentUser.id))
+      })
+  }
+
+  useEffect(() => {
+    getMessages()
+  }, [])
 
   return (
     <div>
@@ -12,13 +26,13 @@ const ChatContainer = () => {
       { showChat
         ? [
           <div className="chatbox">
-            <div className="header">
+            <div className="chat-header">
               <i className="hide-button angle down icon" onClick={() => setShowChat(false)} />
               <span className="header-name" >Tim Cook</span>
               <img className="profile" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQX4xHMVvyT4oat719m-Ol-2Rckw6LecPR65Umj0r82oZX3mTKv&usqp=CAU" />
             </div>
             <div className="message-list">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => <Message />)}
+              {messages.map(m => <Message content={m.content}/>)}
               <div className="footer"></div>
             </div>
             <div className="message-box">

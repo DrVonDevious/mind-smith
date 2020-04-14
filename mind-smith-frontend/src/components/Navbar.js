@@ -6,7 +6,7 @@ const Navbar = (props) => {
   return (
     <div className="headernav">
       <div className="container">
-        <div class="row">
+        <div className="row">
           <nav className="navbar navbar-toggleable-md">
             <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
             <div className="navbar-header">

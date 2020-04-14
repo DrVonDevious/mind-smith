@@ -106,7 +106,6 @@ function App() {
               setChannel={setChannel}
       />
 
-
       <section  className="content">
         <div className="container">
           <div className="row">
@@ -116,7 +115,7 @@ function App() {
             {displayCurrentPage()}
             {/* {!currentPage === "profile" ? <SideBar/> : null} */}
             <SideBar></SideBar>
-            <ChatContainer />
+            {currentUser && <ChatContainer currentUser={currentUser} users={users} />}
 
           </div>
         </div>
