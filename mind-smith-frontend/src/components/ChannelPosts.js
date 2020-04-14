@@ -3,33 +3,18 @@ import { Button, Image, List ,Segment, Header} from 'semantic-ui-react'
 import PostView from './PostView';
 
 const ChannelPosts = (props) => {
-    
-    console.log(props)
     const [channel, setChannel] = useState({posts:[]});
-
-
     useEffect(() => {
-        
        fetch(`http://localhost:3000/channels/${props.match.params.id}`)
        .then(res => res.json())
        .then(channel => setChannel(channel))
        }, [props.match.params.id])
 
-       return (
-        // <div>
-       
-        // <h2>post componant for this channel</h2>
-        // {posts.map(post =><PostView postId={post.id}/> )}
-        // </div>
-        
-        <div className="col-lg-8 col-md-8">
-        {/* <h1>{channel.name}</h1>
-        <p>{channel.description}</p> */}
-
-
+       return ( 
+        <div className="col-lg-8 col-md-8" style={{marginTop: "40px"}}>
+            <h1>{channel.name}</h1>
+            <p>{channel.description}</p> 
             {channel.posts.map(post =><PostView  postId={post.id}/> )}
-      
-
 
      {/* <!-- REPLY --> */}
       <div className="post">

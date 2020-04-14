@@ -5,13 +5,14 @@ button {
 }
 
 .navbar {
-  display: flex;
+  position: absolute;
   border-radius: 0px;
   background-color: #00B5AD;
   min-height: 46px;
-  min-width: 120vw;
-  left: -240px;
+  width: 106vw;
   box-shadow:  0 6px 4px -4px rgba(0,0,0,0.7);
+  left: -2vw;
+  padding-bottom: 12px;
 }
 
 .navbar-profile {
@@ -23,19 +24,17 @@ button {
 }
 
 .navbar-brand {
+  position: absolute;
+  padding-left: 3%;
   cursor: pointer;
   font-family: 'Pacifico', cursive;
   font-size: 1.6em;
-  padding-top: 14px;
-  padding-left: 40px;
 }
 
 .navbar-right {
-  position: absolute;
-  left: 57%;
-  display: flex;
   padding-top: 12px;
-  padding-right: 200px;
+  display: flex;
+  padding-right: 80px;
 }
 
 .navbar-link {

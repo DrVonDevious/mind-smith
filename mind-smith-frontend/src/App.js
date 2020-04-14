@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar'
 import Login from './components/LoginForm'
 import Register from './components/Register'
-import DynamicContainer from './components/DynamicContainer'
 import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 import SideBar from './components/SideBar'
 import ChannelPosts from './components/ChannelPosts'
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Home from "./components/Home"
+import ChatContainer from './containers/ChatContainer'
+
 
 function App() {
 
@@ -87,15 +88,13 @@ function App() {
 
   return (
     <Router>
-    <div >   
+    <div className="root">
       <Navbar users={users}
               channels={channels}
               currentUser={currentUser}
               handleLoginRegister={showLoginRegister}
               handleLogout={handleLogout}
       />
- 
-  
       <section  className="content">
             <div className="container">
               <div className="row">

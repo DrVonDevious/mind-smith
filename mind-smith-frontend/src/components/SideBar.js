@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const SideBar = (props) => (
   
 
-  <div className="col-lg-4 col-md-4">
+  <div className="col-lg-4 col-md-4" style={{marginTop: "40px"}}>
   <div className="sidebarblock">
       <h3>Trending Channnels</h3>
       <div className="divline"></div>
