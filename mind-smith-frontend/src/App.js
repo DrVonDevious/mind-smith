@@ -6,6 +6,7 @@ import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 import SideBar from './components/SideBar'
 import ChannelPosts from './components/ChannelPosts'
+import ChatContainer from './containers/ChatContainer'
 
 function App() {
 
@@ -115,11 +116,11 @@ function App() {
             {displayCurrentPage()}
             {/* {!currentPage === "profile" ? <SideBar/> : null} */}
             <SideBar></SideBar>
+            <ChatContainer />
 
           </div>
         </div>
       </section>
-
 
     </div>
   );
