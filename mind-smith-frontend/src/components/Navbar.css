@@ -12,6 +12,7 @@ button {
   width: 106vw;
   box-shadow:  0 6px 4px -4px rgba(0,0,0,0.7);
   left: -2vw;
+  padding-bottom: 12px;
 }
 
 .navbar-profile {
