@@ -3,7 +3,6 @@ import { Button, Image, List ,Segment, Header} from 'semantic-ui-react'
 import PostView from './PostView';
 
 const ChannelPosts = (props) => {
-    
 
     const [posts, setPosts] = useState([]);
 
@@ -22,7 +21,7 @@ const ChannelPosts = (props) => {
         // <h2>post componant for this channel</h2>
         // {posts.map(post =><PostView postId={post.id}/> )}
         // </div>
-        <div className="col-lg-8 col-md-8">
+          <div className="col-lg-8 col-md-8" style={{marginTop: "40px"}}>
             {posts.map(post =><PostView  postId={post.id}/> )}
       
 

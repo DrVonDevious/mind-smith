@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar'
 import Login from './components/LoginForm'
 import Register from './components/Register'
-import DynamicContainer from './components/DynamicContainer'
 import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 import SideBar from './components/SideBar'
@@ -95,9 +94,8 @@ function App() {
 
 
   return (
-    <div >
-      
-          
+    <div className="root">
+
       <Navbar users={users}
               channels={channels}
               currentUser={currentUser}
@@ -106,21 +104,22 @@ function App() {
               handleLogout={handleLogout}
               setChannel={setChannel}
       />
- 
-  
-      <section  className="content">
-            <div className="container">
-              <div className="row">
 
-      {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
-      {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
-      {displayCurrentPage()}
-      {/* {!currentPage === "profile" ? <SideBar/> : null} */}
-      <SideBar></SideBar>
-              </div>
-            </div>
+
+      <section  className="content">
+        <div className="container">
+          <div className="row">
+
+            {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
+            {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
+            {displayCurrentPage()}
+            {/* {!currentPage === "profile" ? <SideBar/> : null} */}
+            <SideBar></SideBar>
+
+          </div>
+        </div>
       </section>
-      
+
 
     </div>
   );

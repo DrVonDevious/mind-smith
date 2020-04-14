@@ -4,7 +4,7 @@ import { Popup, Card, Image, Rating } from 'semantic-ui-react'
 const SideBar = () => (
   
 
-  <div className="col-lg-4 col-md-4">
+  <div className="col-lg-4 col-md-4" style={{marginTop: "40px"}}>
   <div className="sidebarblock">
       <h3>Channnels</h3>
       <div className="divline"></div>

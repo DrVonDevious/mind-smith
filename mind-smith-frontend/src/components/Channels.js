@@ -47,9 +47,9 @@ const Channels = (props) => {
       //      </List>
       //    </Card>
       //  </div>
-      <div className="col-lg-8 col-md-8">
+      <div className="col-lg-8 col-md-8" style={{marginTop: "40px"}}>
         {props.channels.map(channel => <Channel setChannel={props.setChannel} changePage={props.changePage} currentUser={props.currentUser}  channel={channel}/>)}
-       </div>
+      </div>
 
 
     );
