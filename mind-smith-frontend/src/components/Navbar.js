@@ -4,7 +4,11 @@ import './Navbar.css'
 
 const Navbar = (props) => {
   return (
-    <div className="navbar">
+    <div className="headernav">
+        <div className="container">
+          <div class="row">
+        <div className="navbar"> 
+       
       <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
       <button className="navbar-brand" onClick={() => props.handleChangePage("home")}>MindSmith</button>
       <div className="navbar-right">
@@ -19,8 +23,13 @@ const Navbar = (props) => {
                src='https://edsurge.imgix.net/uploads/post/image/12176/coding-1556754232.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop'
                onClick={() => props.handleChangePage('profile')}/>
         }
+        </div>
+        </div>
+
+       
+        </div>
       </div>
-    </div>
+    </div> 
   )
 }
 

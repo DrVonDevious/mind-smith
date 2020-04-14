@@ -96,7 +96,8 @@ function App() {
 
   return (
     <div >
-
+      
+          
       <Navbar users={users}
               channels={channels}
               currentUser={currentUser}
@@ -105,11 +106,21 @@ function App() {
               handleLogout={handleLogout}
               setChannel={setChannel}
       />
+ 
+  
+      <section  className="content">
+            <div className="container">
+              <div className="row">
 
       {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
       {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
       {displayCurrentPage()}
-      {!currentPage === "profile" ? <SideBar/> : null}
+      {/* {!currentPage === "profile" ? <SideBar/> : null} */}
+      <SideBar></SideBar>
+              </div>
+            </div>
+      </section>
+      
 
     </div>
   );
