@@ -1,0 +1,92 @@
+
+.chatbox {
+  position: fixed;
+  left: 78%;
+  display: block;
+  width: 300px;
+  height: 400px;
+  background-color: whitesmoke;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 4px 4px 16px;
+}
+
+.chat-header {
+  display: flex;
+  height: 50px;
+  font-size: 18pt;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  width: 300px;
+  border-radius: 20px 20px 0px 0px;
+  background-color: white;
+  box-shadow: 1px 3px 10px;
+}
+
+.hide-button:hover{
+  color: red;
+}
+
+.open-chat-button {
+  position: fixed;
+  left: 96vw;
+  top: 94vh;
+  width: 34px;
+  height: 34px;
+  color: teal;
+}
+
+.header-name {
+  padding-left: 10px;
+  font-family: roboto;
+}
+
+.profile {
+  position: relative;
+  left: 90px;
+  top: -5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.message-list {
+  overflow-y: auto;
+  height: 90%;
+  margin: 0px 8px;
+}
+
+.message-list::-webkit-scrollbar {
+  display: none;
+}
+
+.message-box {
+  background-color: white;
+  width: 258px;
+  height: 30px;
+  border-radius: 20px;
+  position: fixed;
+  margin: -56px 22px;
+  box-shadow: 1px 6px 10px 0px;
+  border: none;
+  outline: none;
+  font-size: 12pt;
+  padding: 3px 0px 0px 18px;
+}
+
+.message-input {
+  border: none;
+  width: 80%;
+  margin-right: 14px;
+  outline: none;
+}
+
+.send-button:hover {
+  color: aqua;
+}
+
+.footer {
+  height: 54px;
+}
