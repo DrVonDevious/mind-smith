@@ -1,10 +1,11 @@
 import React from 'react'
-// import Post from '../components/Post'
+import Post from '../components/PostView'
 
-const ProfilePostsContainer = () => {
+const ProfilePostsContainer = (props) => {
+  console.log(props.posts)
   return (
     <div>
-      ProfilePosts
+      {props.posts.map(p => <Post postId={p.id} />)}
     </div>
   )
 }

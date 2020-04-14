@@ -11,24 +11,27 @@ import PostView from './components/PostView'
 
 function App() {
 
-
   // TODO: Should use actual authentication because we dont want to end up like Zoom :(
   const [currentUser, setCurrentUser] = useState(null)
-  const [currentPage, setCurrentPage] = useState("home")
+  const [currentPage, setCurrentPage] = useState("channels") //TODO: Set to home once it's created
   const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
   const [users, setUsers] = useState([])
+  const [channels, setChannels] = useState([])
   const [channel, setChannel] = useState(null)
   const [post, setCurrentPost] = useState(null)
 
-
-
   useEffect(() => {
+    // Get all users
     fetch("http://localhost:3000/users")
       .then(res => res.json())
       .then(users => {
         setUsers(users)
       })
+    // Get all channels
+    fetch("http://localhost:3000/channels")
+      .then(res => res.json())
+      .then(channels => setChannels(channels))
   }, [])
 
   const showLoginRegister = (e) => {
@@ -46,17 +49,41 @@ function App() {
     setLoginOverlay(false)
   }
 
-  const displayCurrentPage = () => {
-    switch (currentPage) {
-      case "profile": return <ProfileContainer />
-      case "channels": return <Channels setChannel={setChannel} changePage={changePage} currentUser={currentUser} />
-      case "channelPosts": return <ChannelPosts channel={channel} />
-      case "post": return <PostView postId={8} changePost={changePost} />
+  const updateUser = (e, section) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/users/${currentUser.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: section === "username" ? e.target[0].value : currentUser.username,
+        bio: section === "bio" ? e.target[0].value : currentUser.bio,
+        img_url: section === "img" ? e.target[0].value : currentUser.img_url
+      })
+    })
+    switch (section) {
+      case "bio":
+        setCurrentUser((user) => { return { ...user, bio: e.target[0].value } })
+        break
+      case "img":
+        setCurrentUser((user) => { return { ...user, img_url: e.target[0].value } })
+        break
+      case "username":
+        setCurrentUser((user) => { return { ...user, username: e.target[0].value } })
+        break
+      default: return null
     }
   }
 
-  const changePost = (e) => {
-    setCurrentPost(e)
+  const displayCurrentPage = () => {
+    switch (currentPage) {
+      case "profile": return <ProfileContainer user={currentUser} handleUpdateUser={updateUser} />
+      case "channels": return <Channels onCreateChannel={onCreateChannel} channels={channels} setChannel={setChannel} changePage={changePage} currentUser={currentUser} />
+      case "channelPosts": return <ChannelPosts channel={channel} />
+    }
+  }
+
+  const onCreateChannel = (c) => {
+    setChannels([...channels, c])
   }
 
   const changePage = (e) => {
@@ -69,17 +96,33 @@ function App() {
   }
 
 
-
-
-
   return (
     <div >
 
-      <Navbar currentUser={currentUser} handleLoginRegister={showLoginRegister} handleChangePage={changePage} handleLogout={handleLogout} />
-      {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay} />}
-      {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser} />}
-      {displayCurrentPage()}
-      <SideBar />
+
+      <Navbar users={users}
+        channels={channels}
+        currentUser={currentUser}
+        handleLoginRegister={showLoginRegister}
+        handleChangePage={changePage}
+        handleLogout={handleLogout}
+        setChannel={setChannel}
+      />
+
+
+      <section className="content">
+        <div className="container">
+          <div className="row">
+
+            {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay} />}
+            {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser} />}
+            {displayCurrentPage()}
+            {/* {!currentPage === "profile" ? <SideBar/> : null} */}
+            <SideBar></SideBar>
+          </div>
+        </div>
+      </section>
+
 
     </div>
   );

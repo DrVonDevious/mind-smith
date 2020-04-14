@@ -10,28 +10,32 @@ button {
   background-color: #00B5AD;
   min-height: 46px;
   min-width: 120vw;
-  left: -20px;
+  left: -240px;
   box-shadow:  0 6px 4px -4px rgba(0,0,0,0.7);
 }
 
 .navbar-profile {
+  cursor: pointer;
   max-width: 25px;
+  max-height: 25px;
   border-radius: 20px;
+  margin-left: 8px;
 }
 
 .navbar-brand {
+  cursor: pointer;
   font-family: 'Pacifico', cursive;
   font-size: 1.6em;
-  position: fixed;
-  left: 10px;
-  padding-top: 8px;
+  padding-top: 14px;
+  padding-left: 40px;
 }
 
 .navbar-right {
+  position: absolute;
+  left: 57%;
   display: flex;
-  position: fixed;
-  left: 83vw;
-  padding-top: 9px;
+  padding-top: 12px;
+  padding-right: 200px;
 }
 
 .navbar-link {

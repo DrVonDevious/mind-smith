@@ -33,7 +33,7 @@ class ChannelsController < ApplicationController
     private
 
     def channel_params
-        params.require(:channel).permit(:name, :description)
+        params.require(:channel).permit(:name, :description , :img)
     end
 
     def find_channel

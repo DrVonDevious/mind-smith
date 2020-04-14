@@ -1,29 +1,36 @@
 import React from 'react'
 import { Popup, Card, Image, Rating } from 'semantic-ui-react'
 
-const PopupExampleTrigger = () => (
-  <div >
-  <Popup
-    trigger={
-      <Card >
-        <Image src='https://react.semantic-ui.com/images/movies/totoro-horizontal.jpg' />
-        <Card.Content>
-          <Card.Header>My Neighbor Totoro</Card.Header>
-          <Card.Description>
-            Two sisters move to the country with their father in order to be
-            closer to their hospitalized mother, and discover the surrounding
-            trees are inhabited by magical spirits.
-          </Card.Description>
-        </Card.Content>
-      </Card>
-    }
-  >
-    <Popup.Header>User Rating</Popup.Header>
-    <Popup.Content>
-      <Rating icon='star' defaultRating={3} maxRating={4} />
-    </Popup.Content>
-  </Popup>
+const SideBar = () => (
+  
+
+  <div className="col-lg-4 col-md-4">
+  <div className="sidebarblock">
+      <h3>Channnels</h3>
+      <div className="divline"></div>
+      <div className="blocktxt">
+          <ul className="cats">
+              <li><a href="#">Channel One <span className="badge pull-right">17</span></a></li>
+          </ul>
+      </div>
   </div>
+
+  
+  <div className="sidebarblock">
+      <h3>Latest Posts</h3>
+      <div className="divline"></div>
+      <div className="blocktxt">
+          <a href="#">Post One</a>
+      </div>
+      <div className="divline"></div>
+      <div className="blocktxt">
+          <a href="#">Post Two</a>
+      </div>
+      
+  </div>
+
+
+</div>
 )
 
-export default PopupExampleTrigger
+export default  SideBar
