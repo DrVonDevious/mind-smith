@@ -1,5 +1,6 @@
 import React, { useState , useEffect } from 'react';
 import { Button, Image, List ,Segment, Header} from 'semantic-ui-react'
+import {Link} from "react-router-dom";
 
 const Channel = (props) => {
     // const [channel, setChannels] = useState([]);
@@ -50,7 +51,7 @@ const Channel = (props) => {
                         <div className="avatar"><img src='https://edsurge.imgix.net/uploads/post/image/12176/coding-1556754232.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop' alt="" /></div>
                     </div>
                     <div className="posttext">
-                        <h2 ><a href="#" onClick={()=>{ props.changePage("channelPosts"); props.setChannel(props.channel)} }>{props.channel.name}</a></h2>
+                        <h2 ><Link to={`/channelPosts/${props.channel.id}`} >{props.channel.name}</Link></h2>
                         <p>{props.channel.description}</p>
                     </div>
                     <div className="clearfix"></div>

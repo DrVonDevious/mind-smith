@@ -11,8 +11,8 @@ const Channels = (props) => {
       let form = e.target
       e.preventDefault()
       let  channel = {
-          name: e.target[0].value,
-          description: e.target[1].value
+          name: form[0].value,
+          description: form[1].value
       }
 
       console.log(channel)

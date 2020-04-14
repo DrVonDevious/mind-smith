@@ -4,26 +4,30 @@ import PostView from './PostView';
 
 const ChannelPosts = (props) => {
     
-
-    const [posts, setPosts] = useState([]);
+    console.log(props)
+    const [channel, setChannel] = useState({posts:[]});
 
 
     useEffect(() => {
         
-       fetch(`http://localhost:3000/channels/${props.channel.id}`)
+       fetch(`http://localhost:3000/channels/${props.match.params.id}`)
        .then(res => res.json())
-       .then(channel => setPosts(channel.posts))
-       }, [props.channel])
+       .then(channel => setChannel(channel))
+       }, [props.match.params.id])
 
        return (
         // <div>
-        // <h1>{props.channel.name}</h1>
-        // <p>{props.channel.description}</p>
+       
         // <h2>post componant for this channel</h2>
         // {posts.map(post =><PostView postId={post.id}/> )}
         // </div>
+        
         <div className="col-lg-8 col-md-8">
-            {posts.map(post =><PostView  postId={post.id}/> )}
+        {/* <h1>{channel.name}</h1>
+        <p>{channel.description}</p> */}
+
+
+            {channel.posts.map(post =><PostView  postId={post.id}/> )}
       
 
 
@@ -38,8 +42,8 @@ const ChannelPosts = (props) => {
                   </div>
                   <div className="posttext pull-left">
                       <div className="textwraper">
-                          <div className="postreply">Post a Reply</div>
-                          <textarea name="reply" id="reply" placeholder="Type your message here"></textarea>
+                          <div className="postreply">write a post in this channel:</div>
+                          <textarea name="reply" id="reply" placeholder="Type your post here"></textarea>
                       </div>
                   </div>
                   <div className="clearfix"></div>
@@ -47,7 +51,7 @@ const ChannelPosts = (props) => {
               <div className="postinfobot">
 
                   <div className="pull-right postreply">
-                      <div className="pull-left"><Button color='teal' size="large"type="submit" className="btn btn-primary">Post Reply</Button></div>
+                      <div className="pull-left"><Button color='teal' size="large"type="submit" className="btn btn-primary">Post your post</Button></div>
                       <div className="clearfix"></div>
                   </div>
                   <div className="clearfix"></div>
