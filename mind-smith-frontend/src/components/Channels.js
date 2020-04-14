@@ -11,8 +11,8 @@ const Channels = (props) => {
       let form = e.target
       e.preventDefault()
       let  channel = {
-          name: e.target[0].value,
-          description: e.target[1].value
+          name: form[0].value,
+          description: form[1].value
       }
 
       console.log(channel)
@@ -30,28 +30,16 @@ const Channels = (props) => {
           setShowcreatechannel(false)
        })
     }
-
      return (
-      //  <div classNameName ="col-lg-8 col-md-8">
-      //    { props.currentUser
-      //        ? showcreatechannel ? <CreateChannelForm handleChannelCreate={handleChannelCreate} /> :<Button onClick={()=>setShowcreatechannel(true)}color='teal' floated='right' size='large'>Create a new channel</Button>
-      //        : null
-      //    }
-
-      //    <br/>
-      //    <br/>
-
-      //    <Card fluid >
-      //      <List divided verticalAlign='middle'>
-      //        {props.channels.map(channel => <Channel setChannel={props.setChannel} changePage={props.changePage} currentUser={props.currentUser}  channel={channel}/>)}
-      //      </List>
-      //    </Card>
-      //  </div>
-      <div className="col-lg-8 col-md-8" style={{marginTop: "40px"}}>
-        {props.channels.map(channel => <Channel setChannel={props.setChannel} changePage={props.changePage} currentUser={props.currentUser}  channel={channel}/>)}
+     <div className="col-lg-8 col-md-8" style={{marginTop: "40px"}}>
+        { props.currentUser
+             ? showcreatechannel ? <CreateChannelForm handleChannelCreate={handleChannelCreate} /> :<Button onClick={()=>setShowcreatechannel(true)}color='teal' floated='right' size='large'>Create a new channel</Button>
+             : null
+         }
+       <br/>
+       <br/>
+        {props.channels.map(channel => <Channel currentUser={props.currentUser}  channel={channel}/>)}
       </div>
-
-
     );
 }
 

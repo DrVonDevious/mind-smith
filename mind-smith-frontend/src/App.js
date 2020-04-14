@@ -6,18 +6,20 @@ import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 import SideBar from './components/SideBar'
 import ChannelPosts from './components/ChannelPosts'
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
+import Home from "./components/Home"
 import ChatContainer from './containers/ChatContainer'
+
 
 function App() {
 
   // TODO: Should use actual authentication because we dont want to end up like Zoom :(
   const [currentUser, setCurrentUser] = useState(null)
-  const [currentPage, setCurrentPage] = useState("channels") //TODO: Set to home once it's created
   const [loginOverlay, setLoginOverlay] = useState(false)
   const [registerOverlay, setRegisterOverlay] = useState(false)
   const [users, setUsers] = useState([])
   const [channels, setChannels] = useState([])
-  const [channel, setChannel] = useState(null)
+
 
   useEffect(() => {
     // Get all users
@@ -72,21 +74,11 @@ function App() {
     }
   }
 
-  const displayCurrentPage = () => {
-    switch (currentPage) {
-      case "profile": return <ProfileContainer user={currentUser} handleUpdateUser={updateUser}/>
-      case "channels": return <Channels onCreateChannel={onCreateChannel} channels={channels} setChannel={setChannel} changePage={changePage} currentUser={currentUser}/>
-      case "channelPosts": return <ChannelPosts channel={channel}/>
-    }
-  }
 
   const onCreateChannel = (c) => {
     setChannels([...channels, c])
   }
 
-  const changePage = (e) => {
-    setCurrentPage(e)
-  }
 
   const handleLogout = () =>{
     setCurrentUser(null)
@@ -95,34 +87,33 @@ function App() {
 
 
   return (
+    <Router>
     <div className="root">
-
       <Navbar users={users}
               channels={channels}
               currentUser={currentUser}
               handleLoginRegister={showLoginRegister}
-              handleChangePage={changePage}
               handleLogout={handleLogout}
-              setChannel={setChannel}
       />
-
-
       <section  className="content">
-        <div className="container">
-          <div className="row">
+            <div className="container">
+              <div className="row">
 
-            {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
-            {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
-            {displayCurrentPage()}
-            {/* {!currentPage === "profile" ? <SideBar/> : null} */}
-            <SideBar></SideBar>
-            <ChatContainer />
-
-          </div>
-        </div>
+      {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
+      {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
+      <Switch> 
+        <Route  exact path="/profile"><ProfileContainer user={currentUser} handleUpdateUser={updateUser}/></Route>
+        <Route path="/channels"><Channels onCreateChannel={onCreateChannel} channels={channels}  currentUser={currentUser}/></Route>
+        <Route path="/channelPosts/:id" render={(routerProps) =><ChannelPosts {...routerProps}/>}/>
+        <Route path="/home"> <Home channels={channels} currentUser={currentUser}/> </Route>
+      </Switch>
+      {/* {!currentPage === "profile" ? <SideBar/> : null} */}
+      <SideBar channels={channels} />
+              </div>
+            </div>
       </section>
-
     </div>
+    </Router>
   );
 }
 

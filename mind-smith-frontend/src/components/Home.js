@@ -3,10 +3,10 @@ import { Popup, Card, Image, Rating } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
 
 
-const SideBar = (props) => (
+const Home= (props) => (
   
 
-  <div className="col-lg-4 col-md-4" style={{marginTop: "40px"}}>
+  <div className="col-lg-4 col-md-4">
   <div className="sidebarblock">
       <h3>Trending Channnels</h3>
       <div className="divline"></div>
@@ -35,4 +35,4 @@ const SideBar = (props) => (
 </div>
 )
 
-export default  SideBar
+export default  Home
