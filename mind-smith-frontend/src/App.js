@@ -96,21 +96,24 @@ function App() {
               handleLogout={handleLogout}
       />
       <section  className="content">
-            <div className="container">
-              <div className="row">
+        <div className="container">
+          <div className="row">
 
-      {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
-      {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
-      <Switch> 
-        <Route  exact path="/profile"><ProfileContainer user={currentUser} handleUpdateUser={updateUser}/></Route>
-        <Route path="/channels"><Channels onCreateChannel={onCreateChannel} channels={channels}  currentUser={currentUser}/></Route>
-        <Route path="/channelPosts/:id" render={(routerProps) =><ChannelPosts {...routerProps}/>}/>
-        <Route path="/home"> <Home channels={channels} currentUser={currentUser}/> </Route>
-      </Switch>
-      {/* {!currentPage === "profile" ? <SideBar/> : null} */}
-      <SideBar channels={channels} />
-              </div>
-            </div>
+            {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
+            {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
+      
+            <Switch> 
+              <Route  exact path="/profile"><ProfileContainer user={currentUser} handleUpdateUser={updateUser}/></Route>
+              <Route path="/channels"><Channels onCreateChannel={onCreateChannel} channels={channels}  currentUser={currentUser}/></Route>
+              <Route path="/channelPosts/:id" render={(routerProps) =><ChannelPosts {...routerProps}/>}/>
+              <Route path="/home"> <Home channels={channels} currentUser={currentUser}/> </Route>
+            </Switch>
+
+            {/* {!currentPage === "profile" ? <SideBar/> : null} */}
+            <SideBar channels={channels} />
+            {currentUser && <ChatContainer currentUser={currentUser} users={users} />}
+          </div>
+        </div>
       </section>
     </div>
     </Router>
