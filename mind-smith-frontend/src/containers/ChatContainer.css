@@ -8,7 +8,7 @@
   background-color: whitesmoke;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 4px 4px 16px;
+  box-shadow: 4px 4px 12px lightblue;
 }
 
 .chat-header {
@@ -25,7 +25,20 @@
   box-shadow: 1px 3px 10px;
 }
 
-.hide-button:hover{
+.no-convos {
+  font-family: roboto;
+  font-size: 20pt;
+}
+
+.user-search-bar {
+
+}
+
+.user-search-input {
+
+}
+
+.hide-button:hover {
   color: red;
 }
 
@@ -36,6 +49,10 @@
   width: 34px;
   height: 34px;
   color: teal;
+}
+
+.open-chat-button:hover {
+  color: aquamarine;
 }
 
 .header-name {
