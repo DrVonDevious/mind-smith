@@ -25,17 +25,44 @@
   box-shadow: 1px 3px 10px;
 }
 
-.no-convos {
+.no-convos-container {
+  display: flex;
+  text-align: center;
+}
+
+.no-convos-msg {
   font-family: roboto;
-  font-size: 20pt;
+  font-size: 14pt;
+  position: relative;
+  top: 120px;
 }
 
 .user-search-bar {
-
+  background-color: azure;
+  box-shadow: 0 2px 1px 1px teal;
+  width: 283px;
+  height: 30px;
+  position: fixed;
+  border-radius: 20px;
+  margin-top: 308px;
+  margin-left: 8px;
 }
 
 .user-search-input {
+  border: none;
+  width: 80%;
+  margin-right: 14px;
+  outline: none;
+  background-color: azure;
+  position: relative;
+  left: 8px;
+  top: 2px;
+}
 
+.user-search-icon {
+  position: relative;
+  top: 5px;
+  left: 8px;
 }
 
 .hide-button:hover {

@@ -10,6 +10,7 @@ const ChatContainer = (props) => {
   const [currentConversation, setCurrentConversation] = useState(null)
   const [message, setMessage] = useState("")
   const [showChat, setShowChat] = useState(false)
+  const [filter, setFilter] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:3000/messages")
@@ -22,7 +23,7 @@ const ChatContainer = (props) => {
         var id_array = filtered_data.map(m => m.user_id && m.recipient_user_id).filter(id => id !== props.currentUser.id)
         id_array = [...new Set(id_array)]
         console.log(id_array)
-        setConversations(props.users.filter(u => id_array.includes(u.id)))
+        setConversations(props.users.filter(user => user.id !== props.currentUser.id)/*.filter(u => id_array.includes(u.id))*/)
       })
   }, [])
 
@@ -39,9 +40,22 @@ const ChatContainer = (props) => {
     </svg>
   )
 
-  const renderNoConversations = () => {
+  const renderUserSearch = () => (
+    <div className="user-search-bar">
+      <input  onChange={(e) => setFilter(e.target.value)} type="text" className="user-search-input" />
+      <svg className="user-search-icon bi bi-search" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fillRule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clipRule="evenodd"/>
+        <path fillRule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clipRule="evenodd"/>
+      </svg>
+    </div>
+  )
 
-  }
+  const renderNoConversations = () => (
+        <div className="no-convos-container">
+          <span className="no-convos-msg">You Do Not Have Any Active Conversations</span>
+          {renderUserSearch()}
+        </div>
+  )
 
   const renderConversation = () => {
     var msg_array = messages.filter(m => m.user_id === currentConversation.id || m.recipient_user_id === currentConversation.id)
@@ -83,24 +97,25 @@ const ChatContainer = (props) => {
           <i className="hide-button angle down icon" onClick={() => {setCurrentConversation(null); setShowChat(false)}} />
           <span className="header-name">{ currentConversation ? currentConversation.username : "Conversations"}</span>
         </div>
-      { conversations.length === 0 ? [
-        <div>
-          <span className="no-convos">You Do Not Have Any Active Conversations</span>
-          <div className="user-search-bar">
-            <input type="text" className="user-search-input" />
-          </div>
-        </div>
-      ] : [
+      { conversations.length === 0 ? renderNoConversations() : [
         <div style={{display: "grid", height: "89%"}}>
           <div className="message-list">
-            { !currentConversation ? conversations.map(c => <Conversation key={c.id} handleMessages={renderMessages} conversation={c} />) : null}
+            { !currentConversation ? [
+                /\S/.test(filter) ? [ // Checks if filter only contains spaces
+                  conversations.filter(c => c.username.toLowerCase().includes(filter.toLowerCase())).map(c => <Conversation key={c.id} handleMessages={renderMessages} conversation={c} />)
+                ] : [
+                  conversations.map(c => <Conversation key={c.id} handleMessages={renderMessages} conversation={c} />)
+                ]
+              ] : null }
             { currentConversation ? renderConversation() : null }
           </div>
-          { currentConversation && [
+          { currentConversation ? [
             <div className="message-bar">
               <input className="message-input" onChange={(e) => setMessage(e.target.value)} value={message} />
               <i onClick={() => sendMessage(message)} className="send-button paper plane icon"></i>
             </div>
+          ] : [
+            renderUserSearch()
           ]}
         </div>
       ]}
