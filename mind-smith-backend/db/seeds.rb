@@ -11,10 +11,10 @@ u2 = User.create(username: "DrVonDevious", password_digest: "guest", bio: "Exist
 u3 = User.create(username: "SaintRobDub", password_digest: "guest", bio: "Locksmith turned coder, so now I can break into your computer AND your house", img_url: "https://ca.slack-edge.com/T02MD9XTF-USLN1N0SX-639efefc59a2-512")
 
 
-c1 = Channel.create(name: "General", description:"everything youcould ever want to know about foobar")
-c2 = Channel.create(name: "Locksmithing",description:"everything youcould ever want to know about foobar")
-c3 = Channel.create(name: "Coding",description:"everything youcould ever want to know about foobar")
-c4 = Channel.create(name: "Livestock",description:"everything youcould ever want to know about foobar")
+c1 = Channel.create(name: "General", description:"everything youcould ever want to know about foobar", img:"https://logos.flamingtext.com/Word-Logos/general-design-sketch-name.png")
+c2 = Channel.create(name: "Locksmithing",description:"everything youcould ever want to know about foobar" ,img:"https://lh3.googleusercontent.com/proxy/m5d_tSOR6aV608VLdYPioF-Atklm-DHeovSIXpWHc5Z0x-gK5jB1hOlAcaIPfC17exZ2zOX2LA4Q9lxsS3f0EB_uM8P78NdnN4AhFsxip680k9ajyPc2ivYP2BxwbqDuLam9HTWcWP9ztQ3t4nU2NPRv2Q")
+c3 = Channel.create(name: "Coding",description:"everything youcould ever want to know about foobar", img:"https://images.wallpaperscraft.com/image/code_programming_text_140050_1350x2400.jpg")
+c4 = Channel.create(name: "Livestock",description:"everything youcould ever want to know about foobar", img:"https://media.pri.org/s3fs-public/styles/story_main/public/story/images/6549384291_ddd1396526_b.jpg?itok=derKhZ7A")
 
 
 p1 = Post.create(title: "First Post", body: "Hello World!", channel_id: c1.id, user_id: u1.id)

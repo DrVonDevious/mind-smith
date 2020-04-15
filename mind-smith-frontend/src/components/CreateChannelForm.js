@@ -18,6 +18,11 @@ const CreateChannelForm = (props) => (
       label='Channel descreption'
       placeholder='Channel descreption'
     />
+    <Form.Input
+      fluid
+      label='Channel picture url'
+      placeholder='Picture URL'
+    />
     <Form.Checkbox
       label='I agree to the Terms and Conditions'
       
