@@ -9,6 +9,7 @@ import ChannelPosts from './components/ChannelPosts'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home"
 import ChatContainer from './containers/ChatContainer'
+import PostViewDetail from './components/PostViewDetail'
 
 
 function App() {
@@ -105,11 +106,13 @@ function App() {
                 <Route exact path="/profile"><ProfileContainer user={currentUser} handleUpdateUser={updateUser} /></Route>
                 <Route path="/channels"><Channels onCreateChannel={onCreateChannel} channels={channels} currentUser={currentUser} /></Route>
                 <Route path="/channelPosts/:id" render={(routerProps) => <ChannelPosts {...routerProps} />} />
+                <Route path="/posts/:id" render={(routerProps) => <PostViewDetail {...routerProps} />} />
                 <Route path="/home"> <Home channels={channels} users={users} currentUser={currentUser} /> </Route>
               </Switch>
 
               {/* {!currentPage === "profile" ? <SideBar/> : null} */}
               <SideBar channels={channels} />
+
               {currentUser && <ChatContainer currentUser={currentUser} users={users} />}
             </div>
           </div>
