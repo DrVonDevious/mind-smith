@@ -14,11 +14,14 @@ const ChatContainer = (props) => {
   useEffect(() => {
     fetch("http://localhost:3000/messages")
       .then(res => res.json())
-      .then(messages => {
-        setMessages(messages.filter(m => m.user_id === props.currentUser.id || m.recipient_user_id === props.currentUser.id))
-        console.log(messages)
-        var id_array = messages.map(m => m.user_id && m.recipient_user_id).filter(id => id !== props.currentUser.id)
+      .then(data => {
+        console.log(data)
+        var filtered_data = data.filter(m => m.user_id === props.currentUser.id || m.recipient_user_id === props.currentUser.id)
+        console.log(filtered_data)
+        setMessages(filtered_data)
+        var id_array = filtered_data.map(m => m.user_id && m.recipient_user_id).filter(id => id !== props.currentUser.id)
         id_array = [...new Set(id_array)]
+        console.log(id_array)
         setConversations(props.users.filter(u => id_array.includes(u.id)))
       })
   }, [])
