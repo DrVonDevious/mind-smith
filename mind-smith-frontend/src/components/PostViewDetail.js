@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import { Button, Header, Container, Image, Icon, Card, List } from 'semantic-ui-react'
-import { Link } from "react-router-dom";
 
-
-class PostView extends Component {
+class PostViewDetail extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            postId: this.props.postId
+            postId: this.props.match.params.id
         }
     }
 
     getPostInfo = () => {
         fetch(`http://localhost:3000/posts/${this.state.postId}`)
             .then(response => response.json())
+            // .then(console.log)
             .then(postInfo => {
                 this.setState({
                     title: postInfo.post.title,
@@ -57,35 +56,34 @@ class PostView extends Component {
     render() {
         return (
             // {/* <!-- POST --> */}
-            <div className="post" >
-                <Link to={`/posts/${this.props.postId}`} >
-                    <div className="topwrap">
-                        <div className="userinfo pull-left">
-                            <div className="avatar">
-                                <img src={this.state.authorImage} alt="" />
+            <div className="post">
+                {console.log(this.props.match.params.id)}
+                <div className="topwrap">
+                    <div className="userinfo pull-left">
+                        <div className="avatar">
+                            <img src={this.state.authorImage} alt="" />
 
 
-                            </div>
                         </div>
-                        <div className="posttext pull-left">
-                            <h2>{this.state.title}</h2>
-                            <p> {this.state.body} </p>
-                        </div>
-                        <div className="clearfix"></div>
                     </div>
-                    <div className="postinfobot">
-
-                        <div className="likeblock pull-left">
-
-                            <a href="#" className="up"><Icon name="thumbs up"></Icon>55</a>
-                            <a href="#" className="down"><Icon name="thumbs down"></Icon>12</a>
-                        </div>
-
-
-                        <div className="posted pull-left">Posted on: &nbsp; {this.state.created_at} &nbsp; &nbsp;by: {this.state.author} </div>
-                        <div className="clearfix"></div>
+                    <div className="posttext pull-left">
+                        <h2>{this.state.title}</h2>
+                        <p> {this.state.body} </p>
                     </div>
-                </Link>
+                    <div className="clearfix"></div>
+                </div>
+                <div className="postinfobot">
+
+                    <div className="likeblock pull-left">
+
+                        <a href="#" className="up"><Icon name="thumbs up"></Icon>55</a>
+                        <a href="#" className="down"><Icon name="thumbs down"></Icon>12</a>
+                    </div>
+
+
+                    <div className="posted pull-left">Posted on: &nbsp; {this.state.created_at} &nbsp; &nbsp;by: {this.state.author} </div>
+                    <div className="clearfix"></div>
+                </div>
             </div>
             // {/* <!-- POST --> */}
 
@@ -115,4 +113,4 @@ class PostView extends Component {
 //     ]
 
 
-export default PostView
+export default PostViewDetail
