@@ -45,7 +45,7 @@ const Channel = (props) => {
         //     </Segment>
 
             // {/* <!-- Channel --> */}
-                <div className="post">
+            <div className="post" style={{boxShadow: "0 3px 6px #5ac2b9"}}>
                 <div className="wrap-ut pull-left">
                     <div className="userinfo pull-left">
                         <div className="avatar"><img src={props.channel.img} alt="" /></div>

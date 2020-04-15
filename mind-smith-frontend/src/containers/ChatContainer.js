@@ -8,6 +8,7 @@ const ChatContainer = (props) => {
   const [messages, setMessages] = useState([])
   const [conversations, setConversations] = useState([])
   const [currentConversation, setCurrentConversation] = useState(null)
+  const [message, setMessage] = useState("")
   const [showChat, setShowChat] = useState(false)
 
   useEffect(() => {
@@ -42,13 +43,35 @@ const ChatContainer = (props) => {
   const renderConversation = () => {
     var msg_array = messages.filter(m => m.user_id === currentConversation.id || m.recipient_user_id === currentConversation.id)
     return (
-      msg_array.map(m => <Message message={m} />)
+      <div>
+        {msg_array.map(m => <Message message={m} />)}
+        <div className="footer" />
+      </div>
     )
   }
 
   const renderMessages = (conversation) => {
     console.log(conversation)
     setCurrentConversation(conversation)
+  }
+
+  const sendMessage = (msg) => {
+    fetch("http://localhost:3000/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        content: msg,
+        user_id: props.currentUser.id,
+        recipient_user_id: currentConversation.id
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        setMessages([...messages, data])
+        setMessage("")
+      })
   }
 
   const renderChatbox = () => (
@@ -65,10 +88,17 @@ const ChatContainer = (props) => {
           </div>
         </div>
       ] : [
-        <div className="message-list">
-          { !currentConversation ? conversations.map(c => <Conversation key={c.id} handleMessages={renderMessages} conversation={c} />) : null}
-          { currentConversation ? renderConversation() : null }
-          <div className="footer" />
+        <div style={{display: "grid", height: "89%"}}>
+          <div className="message-list">
+            { !currentConversation ? conversations.map(c => <Conversation key={c.id} handleMessages={renderMessages} conversation={c} />) : null}
+            { currentConversation ? renderConversation() : null }
+          </div>
+          { currentConversation && [
+            <div className="message-bar">
+              <input className="message-input" onChange={(e) => setMessage(e.target.value)} value={message} />
+              <i onClick={() => sendMessage(message)} className="send-button paper plane icon"></i>
+            </div>
+          ]}
         </div>
       ]}
     </div>

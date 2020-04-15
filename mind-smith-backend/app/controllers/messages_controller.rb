@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-      params.require(:message).permit(:user_id, :recipient_user_id)
+      params.require(:message).permit(:user_id, :recipient_user_id, :content)
   end
 
   def find_message

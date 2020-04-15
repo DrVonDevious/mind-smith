@@ -5,7 +5,7 @@
   display: block;
   width: 300px;
   height: 400px;
-  background-color: whitesmoke;
+  background-color: #00B5AD;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 4px 4px 12px lightblue;
@@ -71,7 +71,6 @@
 
 .message-list {
   overflow-y: auto;
-  height: 90%;
   margin: 0px 8px;
 }
 
@@ -93,15 +92,37 @@
   padding: 3px 0px 0px 18px;
 }
 
+.message-bar {
+  background-color: azure;
+  box-shadow: 0 2px 1px 1px teal;
+  width: 283px;
+  height: 30px;
+  position: fixed;
+  border-radius: 20px;
+  margin-top: 308px;
+  margin-left: 8px;
+}
+
 .message-input {
   border: none;
   width: 80%;
   margin-right: 14px;
   outline: none;
+  background-color: azure;
+  position: relative;
+  left: 14px;
+  top: 3px;
+}
+
+.send-button {
+  position: relative;
+  color: #53ada6;
+  top: 4px;
+  left: 12px;
 }
 
 .send-button:hover {
-  color: aqua;
+  color: #53cccc;
 }
 
 .footer {

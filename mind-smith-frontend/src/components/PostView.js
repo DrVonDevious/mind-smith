@@ -33,7 +33,7 @@ class PostView extends Component {
     render() {
         return (
             // {/* <!-- POST --> */}
-                <div className="post">
+            <div className="post">
                 <div className="topwrap">
                     <div className="userinfo pull-left">
                         <div className="avatar">
