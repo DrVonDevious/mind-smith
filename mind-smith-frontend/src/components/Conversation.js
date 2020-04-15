@@ -3,8 +3,8 @@ import './Conversation.css'
 
 const Conversation = (props) => {
   return (
-    <div className="message">
-      {props.conversation.message}
+    <div className="message" onClick={() => props.handleMessages(props.conversation)}>
+      {props.conversation.username}
     </div>
   )
 }
