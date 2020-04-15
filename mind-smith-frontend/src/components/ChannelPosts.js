@@ -13,7 +13,10 @@ const ChannelPosts = (props) => {
     return (
         <div className="col-lg-8 col-md-8" style={{ marginTop: "40px" }}>
             <h1>{channel.name}</h1>
-            <p>{channel.description}</p>
+            <h4>{channel.description}</h4>
+            <br />
+            <hr />
+            <br />
             {channel.posts.map(post => <PostView postId={post.id} />)}
 
             {/* <!-- REPLY --> */}

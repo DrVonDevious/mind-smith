@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-import { Button, Header, Card, Image, List } from 'semantic-ui-react'
-=======
-import { Button, Header, Container, Image , Icon } from 'semantic-ui-react'
->>>>>>> 130f7c8543c33f02e89fbe6a06c47cbac7272228
+import { Button, Header, Container, Image, Icon, Card, List } from 'semantic-ui-react'
 
 class PostView extends Component {
 
@@ -58,13 +54,8 @@ class PostView extends Component {
     }
     render() {
         return (
-<<<<<<< HEAD
-            this.state.postInfo === null
-                ? <Card key="Post" text><Header as='h3'>Loading...</Header></Card>
-                : this.postContent()
-=======
             // {/* <!-- POST --> */}
-                <div className="post">
+            <div className="post">
                 <div className="topwrap">
                     <div className="userinfo pull-left">
                         <div className="avatar">
@@ -91,10 +82,9 @@ class PostView extends Component {
                     <div className="posted pull-left">Posted on: &nbsp; {this.state.created_at} &nbsp; &nbsp;by: {this.state.author} </div>
                     <div className="clearfix"></div>
                 </div>
-                </div>
-              // {/* <!-- POST --> */}
+            </div>
+            // {/* <!-- POST --> */}
 
->>>>>>> 130f7c8543c33f02e89fbe6a06c47cbac7272228
         )
     }
 }
