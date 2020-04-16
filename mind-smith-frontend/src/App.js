@@ -6,9 +6,10 @@ import ProfileContainer from './containers/ProfileContainer'
 import Channels from './components/Channels'
 import SideBar from './components/SideBar'
 import ChannelPosts from './components/ChannelPosts'
-import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home"
 import ChatContainer from './containers/ChatContainer'
+import PostViewDetail from './components/PostViewDetail'
 
 
 function App() {
@@ -19,7 +20,6 @@ function App() {
   const [registerOverlay, setRegisterOverlay] = useState(false)
   const [users, setUsers] = useState([])
   const [channels, setChannels] = useState([])
-
 
   useEffect(() => {
     // Get all users
@@ -60,15 +60,15 @@ function App() {
         img_url: section === "img" ? e.target[0].value : currentUser.img_url
       })
     })
-    switch(section) {
+    switch (section) {
       case "bio":
-        setCurrentUser((user) => { return {...user, bio: e.target[0].value }})
+        setCurrentUser((user) => { return { ...user, bio: e.target[0].value } })
         break
       case "img":
-        setCurrentUser((user) => { return {...user, img_url: e.target[0].value }})
+        setCurrentUser((user) => { return { ...user, img_url: e.target[0].value } })
         break
       case "username":
-        setCurrentUser((user) => { return {...user, username: e.target[0].value }})
+        setCurrentUser((user) => { return { ...user, username: e.target[0].value } })
         break
       default: return null
     }
@@ -80,7 +80,7 @@ function App() {
   }
 
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     setCurrentUser(null)
     //toDo clear token here
   }
@@ -88,34 +88,36 @@ function App() {
 
   return (
     <Router>
-    <div className="root">
-      <Navbar users={users}
-              channels={channels}
-              currentUser={currentUser}
-              handleLoginRegister={showLoginRegister}
-              handleLogout={handleLogout}
-      />
-      <section  className="content">
-        <div className="container">
-          <div className="row">
+      <div className="root">
+        <Navbar users={users}
+          channels={channels}
+          currentUser={currentUser}
+          handleLoginRegister={showLoginRegister}
+          handleLogout={handleLogout}
+        />
+        <section className="content">
+          <div className="container">
+            <div className="row">
 
-            {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay}/>}
-            {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser}/>}
-      
-            <Switch> 
-              <Route  exact path="/profile"><ProfileContainer user={currentUser} handleUpdateUser={updateUser}/></Route>
-              <Route path="/channels"><Channels onCreateChannel={onCreateChannel} channels={channels}  currentUser={currentUser}/></Route>
-              <Route path="/channelPosts/:id" render={(routerProps) =><ChannelPosts {...routerProps}/>}/>
-              <Route path="/home"> <Home channels={channels}  users={users} currentUser={currentUser}/> </Route>
-            </Switch>
+              {!currentUser && loginOverlay && <Login setUser={setCurrentUser} users={users} handleCloseOverlay={closeOverlay} />}
+              {!currentUser && registerOverlay && <Register handleCloseOverlay={closeOverlay} setUser={setCurrentUser} />}
 
-            {/* {!currentPage === "profile" ? <SideBar/> : null} */}
-            <SideBar channels={channels} />
-            {currentUser && <ChatContainer currentUser={currentUser} users={users} />}
+              <Switch>
+                <Route exact path="/profile"><ProfileContainer user={currentUser} handleUpdateUser={updateUser} /></Route>
+                <Route path="/channels"><Channels onCreateChannel={onCreateChannel} channels={channels} currentUser={currentUser} /></Route>
+                <Route path="/channelPosts/:id" render={(routerProps) => <ChannelPosts {...routerProps} currentUser={currentUser} />} />
+                <Route path="/posts/:id" render={(routerProps) => <PostViewDetail {...routerProps} currentUser={currentUser} />} />
+                <Route path="/home"> <Home channels={channels} users={users} currentUser={currentUser} /> </Route>
+              </Switch>
+
+              {/* {!currentPage === "profile" ? <SideBar/> : null} */}
+              <SideBar channels={channels} />
+
+              {currentUser && <ChatContainer currentUser={currentUser} users={users} />}
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
     </Router>
   );
 }
