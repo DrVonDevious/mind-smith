@@ -12,7 +12,7 @@ const Navbar = (props) => {
           <nav className="navbar navbar-toggleable-md">
             <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
             <div className="navbar-header">
-              <Link to="/home"><button className="navbar-brand" >MindSmith</button></Link>
+              <Link to="/"><button className="navbar-brand" >MindSmith</button></Link>
             </div>
             <div className="collapse navbar-collapse" id="collapsibleNavbar">
               <ul className="nav navbar-nav navbar-right">

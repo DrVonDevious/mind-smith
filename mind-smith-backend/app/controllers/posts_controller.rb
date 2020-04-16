@@ -7,15 +7,16 @@ class PostsController < ApplicationController
     end
 
     def show
+       @likes =  @post.likes.count
         @post_list = @post.channel.posts.select{|post| post.id != @post.id}
-        render json: {post: {title: @post.title, body:@post.body, created_at:@post.created_at, tags:@post.tags, author:@post.user.username, authorImage:@post.user.img_url, channel: @post.channel.name}, similarPosts:{byChannel:@post_list}}
+        render json: {post: {id: @post.id, title: @post.title, body:@post.body, created_at:@post.created_at, tags:@post.tags, author:@post.user.username, authorImage:@post.user.img_url, channel: @post.channel.name, likes:@likes}, similarPosts:{byChannel:@post_list}}
     end
 
     def new
     end
 
     def create
-        byebug
+     
         @post = Post.create(post_params)
         if post_params[:tags]
             post_params.tags.each do |tag|

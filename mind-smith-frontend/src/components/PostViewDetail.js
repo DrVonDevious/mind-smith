@@ -3,6 +3,25 @@ import { Button, Header, Container, Image, Icon, Card, List } from 'semantic-ui-
 
 class PostViewDetail extends Component {
 
+    addlikes = () => {
+        fetch("http://localhost:3000/likes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json", Accept: "application/json"
+            },
+            body: JSON.stringify({
+        
+                
+                like:{ 
+                    
+                    user_id: this.props.currentUser.id,
+                    post_id: this.state.postId}
+            })
+        })
+            .then(res => res.json())
+            .then(post =>this.setState({likes: this.state.likes+1}))
+    }
+
     constructor(props) {
         super(props)
         this.state = {
@@ -15,13 +34,15 @@ class PostViewDetail extends Component {
             .then(response => response.json())
             .then(postInfo => {
                 this.setState({
+                    id: postInfo.post.id,
                     title: postInfo.post.title,
                     body: postInfo.post.body,
                     author: postInfo.post.author,
                     authorImage: postInfo.post.authorImage,
                     channel: postInfo.post.channel,
                     created_at: postInfo.post.created_at,
-                    similarPostsChannel: postInfo.similarPosts.byChannel
+                    similarPostsChannel: postInfo.similarPosts.byChannel,
+                    likes:postInfo.post.likes
                 })
             })
     }
@@ -73,7 +94,7 @@ class PostViewDetail extends Component {
 
                     <div className="likeblock pull-left">
 
-                        <a href="#" className="up"><Icon name="thumbs up"></Icon>55</a>
+                        <a href="#" onClick={()=> this.addlikes()} className="up"><Icon name="thumbs up"></Icon>{this.state.likes}</a>
                         <a href="#" className="down"><Icon name="thumbs down"></Icon>12</a>
                     </div>
 
