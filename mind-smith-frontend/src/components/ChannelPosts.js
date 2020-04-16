@@ -31,7 +31,7 @@ const ChannelPosts = (props) => {
             body: JSON.stringify(post)
         })
             .then(res => res.json())
-            .then(post => console.log(post))
+            .then(post => setChannel({...channel,posts:[...channel.posts , post]}))
 
 
         // {
@@ -47,7 +47,7 @@ const ChannelPosts = (props) => {
             <br />
             <hr />
             <br />
-            {channel.posts.map(post => <PostView postId={post.id} />)}
+            {channel.posts.map(post => <PostView currentUser={props.currentUser} postId={post.id} />)}
 
             {/* <!-- REPLY --> */}
             <div className="post">

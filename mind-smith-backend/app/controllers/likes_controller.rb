@@ -2,7 +2,7 @@ class LikesController < ApplicationController
     before_action :find_like, only: [:show, :edit, :update, :destroy]
 
     def index
-        @likes = Likes.all 
+        @likes = Like.all 
         render json: @likes
     end
 

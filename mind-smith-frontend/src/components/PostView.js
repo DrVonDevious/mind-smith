@@ -17,19 +17,39 @@ class PostView extends Component {
             .then(response => response.json())
             .then(postInfo => {
                 this.setState({
+                    id: postInfo.post.id,
                     title: postInfo.post.title,
                     body: postInfo.post.body,
                     author: postInfo.post.author,
                     authorImage: postInfo.post.authorImage,
                     channel: postInfo.post.channel,
                     created_at: postInfo.post.created_at,
-                    similarPostsChannel: postInfo.similarPosts.byChannel
+                    similarPostsChannel: postInfo.similarPosts.byChannel,
+                    likes:postInfo.post.likes
                 })
             })
     }
 
+    addlikes = () => {
+        fetch("http://localhost:3000/likes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json", Accept: "application/json"
+            },
+            body: JSON.stringify({like: {
+                user_id: this.props.currentUser.id,
+                post_id: this.state.postId
+            }})
+        })
+            .then(res => res.json())
+            .then(post =>this.setState({likes: this.state.likes+1}))
+    }
+
+
+
     componentDidMount() {
         this.getPostInfo()
+        
     }
 
     postContent = () => {
@@ -57,9 +77,8 @@ class PostView extends Component {
     render() {
         return (
             // {/* <!-- POST --> */}
-
             <div className="post" >
-                <Link to={`/posts/${this.props.postId}`} >
+                
                     <div className="topwrap">
                         <div className="userinfo pull-left">
                             <div className="avatar">
@@ -67,10 +86,10 @@ class PostView extends Component {
 
 
                             </div>
-
                         </div>
                         <div className="posttext pull-left">
-                            <h2>{this.state.title}</h2>
+                        <Link to={`/posts/${this.props.postId}`} >
+                            <h2>{this.state.title}</h2></Link>
                             <p> {this.state.body} </p>
                         </div>
                         <div className="clearfix"></div>
@@ -79,15 +98,15 @@ class PostView extends Component {
 
                         <div className="likeblock pull-left">
 
-                            <a href="#" className="up"><Icon name="thumbs up"></Icon>55</a>
-                            <a href="#" className="down"><Icon name="thumbs down"></Icon>12</a>
+                            <a onClick={()=> this.addlikes()} className="up"><Icon name="thumbs up"></Icon>{this.state.likes} </a>
+                            <a href="#" className="down"><Icon name="thumbs down"></Icon>5</a>
                         </div>
 
 
                         <div className="posted pull-left">Posted on: &nbsp; {this.state.created_at} &nbsp; &nbsp;by: {this.state.author} </div>
                         <div className="clearfix"></div>
                     </div>
-                </Link>
+       
             </div>
             // {/* <!-- POST --> */}
 
