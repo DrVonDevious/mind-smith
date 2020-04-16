@@ -67,11 +67,11 @@ const ChannelPosts = (props) => {
                           <div className="textwraper" style={{backgroundColor: "white"}}>
                                 <div className="postreply">Write a post in this channel:</div>
                                 {/* <textarea name="title" id="title" placeholder="Title"></textarea> */}
-                            <input style={{outline: "none", borderRadius: "12px"}} type="text" name="title" id="title" placeholder="Title" required></input>
+                            <input style={{outline: "none", borderRadius: "3px", border: "none", boxShadow: "1px 1px 3px inset"}} type="text" name="title" id="title" placeholder="Title" required></input>
                             </div>
                           <div className="textwraper" style={{backgroundColor: "white"}}>
                                 {/* <div className="postreply">write a post in this channel:</div> */}
-                            <textarea name="reply" id="reply" style={{backgroundColor: "white", outline: "none", boxShadow: "1px 1px 3px inset"}} placeholder="Type your post here" required></textarea>
+                            <textarea name="reply" id="reply" style={{borderRadius: "3px", backgroundColor: "white", outline: "none", boxShadow: "1px 1px 3px inset"}} placeholder="Type your post here" required></textarea>
                             </div>
                         </div>
                         <div className="clearfix"></div>

@@ -78,7 +78,7 @@ class PostViewDetail extends Component {
                     </div>
 
 
-                    <div className="posted pull-left">Posted on: &nbsp; {this.state.created_at} &nbsp; &nbsp;by: {this.state.author} </div>
+                    <div className="posted pull-left">Posted on: {this.state.created_at}. by: {this.state.author} </div>
                     <div className="clearfix"></div>
                 </div>
             </div>

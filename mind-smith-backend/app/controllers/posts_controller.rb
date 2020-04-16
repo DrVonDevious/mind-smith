@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     end
 
     def create
-        byebug
         @post = Post.create(post_params)
         if post_params[:tags]
             post_params.tags.each do |tag|
