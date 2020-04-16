@@ -91,13 +91,12 @@ class PostViewDetail extends Component {
                     <div className="clearfix"></div>
                 </div>
                 <div className="postinfobot">
-
+                  {this.props.currentUser && [
                     <div className="likeblock pull-left">
-
                         <a href="#" onClick={()=> this.addlikes()} className="up"><Icon name="thumbs up"></Icon>{this.state.likes}</a>
                         <a href="#" className="down"><Icon name="thumbs down"></Icon>12</a>
                     </div>
-
+                  ]}
 
                     <div className="posted pull-left">Posted on: {this.state.created_at}. by: {this.state.author} </div>
                     <div className="clearfix"></div>

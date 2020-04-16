@@ -61,7 +61,7 @@ const Channel = (props) => {
 
                 </div>
                 <div className="clearfix"></div>
-           
+            </div>
 
             <div className="comments">
                 <div className="commentbg">
