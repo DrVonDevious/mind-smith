@@ -57,6 +57,7 @@ class PostView extends Component {
     render() {
         return (
             // {/* <!-- POST --> */}
+
             <div className="post" >
                 <Link to={`/posts/${this.props.postId}`} >
                     <div className="topwrap">
@@ -66,6 +67,7 @@ class PostView extends Component {
 
 
                             </div>
+
                         </div>
                         <div className="posttext pull-left">
                             <h2>{this.state.title}</h2>

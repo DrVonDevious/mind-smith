@@ -45,15 +45,19 @@ const Channel = (props) => {
         //     </List.Item>
         //     </Segment>
 
-        // {/* <!-- Channel --> */}
-        <div className="post">
-            <div className="wrap-ut pull-left">
-                <div className="userinfo pull-left">
-                    <div className="avatar"><img src={props.channel.img} alt="" /></div>
-                </div>
-                <div className="posttext">
-                    <h2 ><Link to={`/channelPosts/${props.channel.id}`} currentUser={props.currentUser} >{props.channel.name}</Link></h2>
-                    <p>{props.channel.description}</p>
+
+            // {/* <!-- Channel --> */}
+            <div className="post" style={{boxShadow: "0 3px 6px #5ac2b9"}}>
+                <div className="wrap-ut pull-left">
+                    <div className="userinfo pull-left">
+                        <div className="avatar"><img src={props.channel.img} alt="" /></div>
+                    </div>
+                    <div className="posttext">
+                        <h2 ><Link to={`/channelPosts/${props.channel.id}`} >{props.channel.name}</Link></h2>
+                        <p>{props.channel.description}</p>
+                    </div>
+                    <div className="clearfix"></div>
+
                 </div>
                 <div className="clearfix"></div>
             </div>
