@@ -13,7 +13,6 @@ class PostViewDetail extends Component {
     getPostInfo = () => {
         fetch(`http://localhost:3000/posts/${this.state.postId}`)
             .then(response => response.json())
-            // .then(console.log)
             .then(postInfo => {
                 this.setState({
                     title: postInfo.post.title,
@@ -23,7 +22,7 @@ class PostViewDetail extends Component {
                     channel: postInfo.post.channel,
                     created_at: postInfo.post.created_at,
                     similarPostsChannel: postInfo.similarPosts.byChannel
-                }, () => console.log(this.state))
+                })
             })
     }
 
@@ -46,7 +45,6 @@ class PostViewDetail extends Component {
                 </Card >
                 <Card fluid key="Suggested">
                     <List divided verticalAlign="middle">Suggested posts
-                        {console.log(this.state)}
                         {this.state.similarPostsChannel ? this.state.similarPostsChannel.map(post => <Card><Header as="h3">{post.title}</Header><Header as="h4">{post.body.slice(0, 25)}...</Header></Card>) : "Loading..."}
                     </List>
                 </Card>
@@ -57,7 +55,6 @@ class PostViewDetail extends Component {
         return (
             // {/* <!-- POST --> */}
             <div className="post">
-                {console.log(this.props.match.params.id)}
                 <div className="topwrap">
                     <div className="userinfo pull-left">
                         <div className="avatar">

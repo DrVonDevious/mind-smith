@@ -52,7 +52,7 @@ const Channel = (props) => {
                     <div className="avatar"><img src={props.channel.img} alt="" /></div>
                 </div>
                 <div className="posttext">
-                    <h2 ><Link to={`/channelPosts/${props.channel.id}`} >{props.channel.name}</Link></h2>
+                    <h2 ><Link to={`/channelPosts/${props.channel.id}`} currentUser={props.currentUser} >{props.channel.name}</Link></h2>
                     <p>{props.channel.description}</p>
                 </div>
                 <div className="clearfix"></div>

@@ -105,8 +105,8 @@ function App() {
               <Switch>
                 <Route exact path="/profile"><ProfileContainer user={currentUser} handleUpdateUser={updateUser} /></Route>
                 <Route path="/channels"><Channels onCreateChannel={onCreateChannel} channels={channels} currentUser={currentUser} /></Route>
-                <Route path="/channelPosts/:id" render={(routerProps) => <ChannelPosts {...routerProps} />} />
-                <Route path="/posts/:id" render={(routerProps) => <PostViewDetail {...routerProps} />} />
+                <Route path="/channelPosts/:id" render={(routerProps) => <ChannelPosts {...routerProps} currentUser={currentUser} />} />
+                <Route path="/posts/:id" render={(routerProps) => <PostViewDetail {...routerProps} currentUser={currentUser} />} />
                 <Route path="/home"> <Home channels={channels} users={users} currentUser={currentUser} /> </Route>
               </Switch>
 
