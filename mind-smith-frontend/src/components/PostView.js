@@ -49,7 +49,6 @@ class PostView extends Component {
 
     componentDidMount() {
         this.getPostInfo()
-        
     }
 
     postContent = () => {

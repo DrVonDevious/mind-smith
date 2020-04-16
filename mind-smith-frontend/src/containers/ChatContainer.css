@@ -121,7 +121,7 @@
 
 .message-bar {
   background-color: azure;
-  box-shadow: 0 2px 1px 1px teal;
+  box-shadow: 0 2px 1px 1px teal, 0 -1px 1px teal;
   width: 283px;
   height: 30px;
   position: fixed;
