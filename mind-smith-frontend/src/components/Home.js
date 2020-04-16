@@ -2,7 +2,7 @@ import React from 'react'
 import { Popup, Card, Image, Rating , Icon,Feed} from 'semantic-ui-react'
 import {Link} from "react-router-dom";
 import Channel from "./Channel"
-import { Divider, Grid, Segment } from 'semantic-ui-react'
+
 
 
 
