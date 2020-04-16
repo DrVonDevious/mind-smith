@@ -64,13 +64,13 @@ const Channel = (props) => {
             </div>
 
             <div className="comments">
-                <div className="commentbg">
+              <div className="commentbg" style={{position: "relative", top: "-108px", left: "78px"}}>
                     {props.channel.posts.length} posts
-                            <div className="mark"></div>
+                            {/* <div className="mark"></div> */}
                 </div>
             </div>
 
-            <Button onClick={() => followChannel(props.channel)} color='teal' floated='right' size='large'>Follow</Button>
+            <Button style={{position: "relative", top: "-80px", left: "-12px"}} onClick={() => followChannel(props.channel)} color='teal' floated='right' size='large'>Follow</Button>
 
             <div className="clearfix"></div>
         </div>
