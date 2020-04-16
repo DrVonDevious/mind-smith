@@ -15,7 +15,18 @@ class PostsController < ApplicationController
     end
 
     def create
+        byebug
         @post = Post.create(post_params)
+        if post_params[:tags]
+            post_params.tags.each do |tag|
+                if Tag.all.include?(tag)
+                    PostTag.create(tag_id: tag.id, post_id: @post.id)
+                else
+                    new_tag = Tag.create(name: tag.name)
+                    PostTag.create(tag_id: new_tag.id, post_id: @post.id)
+                end
+            end
+        end
         render json: @post
     end
 
@@ -33,7 +44,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(user_id, channel_id, post_tags)
+        params.require(:post).permit(:user_id, :channel_id, :tags, :title, :body)
     end
 
     def find_post
