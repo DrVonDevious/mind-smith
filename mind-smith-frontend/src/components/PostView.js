@@ -24,7 +24,7 @@ class PostView extends Component {
                     channel: postInfo.post.channel,
                     created_at: postInfo.post.created_at,
                     similarPostsChannel: postInfo.similarPosts.byChannel
-                }, () => console.log(this.state))
+                })
             })
     }
 
