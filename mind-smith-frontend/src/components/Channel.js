@@ -47,6 +47,7 @@ const Channel = (props) => {
 
 
             // {/* <!-- Channel --> */}
+          <div>
             <div className="post" style={{boxShadow: "0 3px 6px #5ac2b9"}}>
                 <div className="wrap-ut pull-left">
                     <div className="userinfo pull-left">
