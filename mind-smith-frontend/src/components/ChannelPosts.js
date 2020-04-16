@@ -47,7 +47,6 @@ const ChannelPosts = (props) => {
             <br />
             <hr />
             <br />
-            {channel.posts.map(post => <PostView currentUser={props.currentUser} postId={post.id} />)}
 
             {/* <!-- REPLY --> */}
             <div className="post">
@@ -88,9 +87,7 @@ const ChannelPosts = (props) => {
             </div>
             {/* <!-- REPLY --> */}
 
-
-
-
+            {channel.posts.slice(0).reverse().map(post => <PostView currentUser={props.currentUser} postId={post.id} />)}
 
         </div>
 
