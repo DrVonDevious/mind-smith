@@ -46,9 +46,9 @@ const Channel = (props) => {
         //     </Segment>
 
 
-            // {/* <!-- Channel --> */}
-          <div>
-            <div className="post" style={{boxShadow: "0 3px 6px #5ac2b9"}}>
+        // {/* <!-- Channel --> */}
+        <div>
+            <div className="post" style={{ boxShadow: "0 3px 6px #5ac2b9" }}>
                 <div className="wrap-ut pull-left">
                     <div className="userinfo pull-left">
                         <div className="avatar"><img src={props.channel.img} alt="" /></div>
@@ -61,20 +61,21 @@ const Channel = (props) => {
 
                 </div>
                 <div className="clearfix"></div>
-           
 
-            <div className="comments">
-                <div className="commentbg">
-                    {props.channel.posts.length} posts
+
+                <div className="comments">
+                    <div className="commentbg">
+                        {props.channel.posts.length} posts
                             <div className="mark"></div>
+                    </div>
                 </div>
+
+                <Button onClick={() => followChannel(props.channel)} color='teal' floated='right' size='large'>Follow</Button>
+
+                <div className="clearfix"></div>
             </div>
-
-            <Button onClick={() => followChannel(props.channel)} color='teal' floated='right' size='large'>Follow</Button>
-
-            <div className="clearfix"></div>
         </div>
-        //   {/* <!-- Channel --> */}
+
 
     )
 

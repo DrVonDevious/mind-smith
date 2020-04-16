@@ -12,7 +12,7 @@ u3 = User.create(username: "SaintRobDub", password_digest: "guest", bio: "Locksm
 
 
 c1 = Channel.create(name: "General", description:"everything you could ever want to know about foobar", img:"https://logos.flamingtext.com/Word-Logos/general-design-sketch-name.png")
-c2 = Channel.create(name: "Locksmithing",description:"everything you could ever want to know about foobar" ,img:"https://lh3.googleusercontent.com/proxy/m5d_tSOR6aV608VLdYPioF-Atklm-DHeovSIXpWHc5Z0x-gK5jB1hOlAcaIPfC17exZ2zOX2LA4Q9lxsS3f0EB_uM8P78NdnN4AhFsxip680k9ajyPc2ivYP2BxwbqDuLam9HTWcWP9ztQ3t4nU2NPRv2Q")
+c2 = Channel.create(name: "Locksmithing",description:"everything you could ever want to know about foobar" ,img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Pin_tumbler_with_key.svg/1229px-Pin_tumbler_with_key.svg.png")
 c3 = Channel.create(name: "Coding",description:"everything you could ever want to know about foobar", img:"https://images.wallpaperscraft.com/image/code_programming_text_140050_1350x2400.jpg")
 c4 = Channel.create(name: "Livestock",description:"everything you could ever want to know about foobar", img:"https://media.pri.org/s3fs-public/styles/story_main/public/story/images/6549384291_ddd1396526_b.jpg?itok=derKhZ7A")
 
